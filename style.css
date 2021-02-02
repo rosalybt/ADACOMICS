@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", cursive;
+}
+
+.barra {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+.barra .contenedor-marca {
+  background-color: #e50000;
+}
+.barra .contenedor-marca .nombre-marca {
+  font-family: "Bangers", cursive;
+  font-weight: bolder;
+  line-height: 0;
+  font-size: 2.5rem;
+  padding: 5px;
+  color: white;
+}
+
+.portada {
+  position: relative;
+  background-image: url(imagenes/portada.jpg);
+  background-size: cover;
+  padding: 30vh 0;
+}
+.portada::before {
+  content: "";
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*# sourceMappingURL=style.css.map */
