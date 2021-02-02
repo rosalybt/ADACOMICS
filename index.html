@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css>
+    <title>ADA COMICS </title>
+</head>
+
+<body>
+
+    <header>
+        <div class="barra">
+            <div class="contenedor-marca">
+                <h1 class="nombre-marca">ADA COMICS</h1>
+            </div>
+        </div>
+    </header>
+    <section class="portada">
+        <!-- portada -->
+    </section>
+
+    <main>
+        <form action="" id="form">
+            <div class="busqueda">
+                <label for="filtro-texto" class="filtro-texto">
+                    <h2>Búsqueda</h2>
+                    <input type="text" name="filtro" id="filtro-texto" placeholder="Ingresa tu búsqueda">
+                </label>
+                <i class="fas fa-search"></i>
+            </div>
+
+            <div class="filtros">
+                <label for="tipo">TIPO
+                    <select name="tipo" id="tipo" class="select">
+                        <option value="comics">Comics</option>
+                        <option value="personajes">Personajes</option>
+                    </select>
+                </label>
+
+                <label for="orden">ORDEN
+                    <select name="orden" id="orden" class="select">
+                        <option value="ascendente">A-Z</option>
+                        <option value="descendente">Z-A</option>
+                        <option value="mas-nuevo">Mas nuevo</option>
+                        <option value="mas-viejo">Mas viejo</option>
+                    </select>
+                </label>
+
+                <button class="btn-buscar">BUSCAR</button>
+            </div>
+        </form>
+
+        <div class="show-results">
+            <h3> Resultados </h3>
+            <span class="resultados">0000</span> <span>RESULTADOS</span>
+        </div>
+        <div class="contenedor-cards">
+            <!-- Cards -->
+        </div>
+
+        <div class="pages">
+            <button id="btn-double-previous"><i class="fas fa-angle-double-left"></i></button>
+            <button id="btn-previous"><i class="fas fa-angle-left"></i></button>
+            <button id="btn-next"><i class="fas fa-angle-right"></i></button>
+            <button id="btn-double-next"><i class="fas fa-angle-double-right"></i></button>
+        </div>
+    </main>
+
+    <footer>
+        <p>Hecho con pasión ❣️ and SASS por
+            <a href="https://www.linkedin.com/in/rosaly-balbuena-b287241b4/" target="_blank">Rosaly Balbuena</a>
+        </p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>
