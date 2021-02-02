@@ -5,6 +5,13 @@
   font-family: "Roboto", cursive;
 }
 
+footer, .pages {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
 .barra {
   background-color: black;
   display: flex;
@@ -37,6 +44,52 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+main {
+  padding: 50px 60px;
+}
+main .contenedor-cards {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.pages {
+  margin: 3rem 0 3rem 0;
+}
+.pages button {
+  border: none;
+  padding: 5px;
+  width: 45px;
+  height: 45px;
+  background-color: black;
+  color: white;
+  margin: 5px;
+  cursor: pointer;
+  color: white;
+  font-weight: lighter;
+  font-size: large;
+  color: _;
+  font-weight: _;
+  font-size: large;
+}
+.pages button:hover {
+  background-color: #e50000;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  height: 25vh;
+  color: _;
+  font-weight: lighter;
+  font-size: large;
+}
+footer a:visited, footer a:link, footer a:active {
+  text-decoration: none;
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */

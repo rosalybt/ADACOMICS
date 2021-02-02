@@ -77,3 +77,43 @@ $tamanio-pequenio: small;
     left: 0;
   }
 }
+
+main {
+  padding: 50px 60px;
+
+  .contenedor-cards {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.pages {
+  @extend %centrar;
+  margin: 3rem 0 3rem 0;
+  button {
+    @include button($color-secundario, $color-principal, 45px, 45px, 5px);
+    @include texto(_, large, _);
+    &:hover {
+      background-color: $color-terceario;
+    }
+  }
+}
+
+footer {
+  @extend %centrar;
+  background-color: $color-secundario;
+  color: $color-principal;
+  height: 25vh;
+  @include texto(_, large, lighter);
+
+  a {
+    &:visited,
+    &:link,
+    &:active {
+      text-decoration: none;
+      color: $color-principal;
+    }
+  }
+}
