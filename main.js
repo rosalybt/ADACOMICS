@@ -1,5 +1,7 @@
 
 
+const URLBASE = "https://gateway.marvel.com/v1/public/"
+const APIKEY = "apikey=ab8edd3b8eb3e77c63213cd2e9ea3d25"
 
 const createCard = (cover, HTML, header) => {
 
@@ -19,11 +21,9 @@ const createCard = (cover, HTML, header) => {
 };
 
 
-const urlBase = "https://gateway.marvel.com/v1/public/"
-const apiKey = "apikey=ab8edd3b8eb3e77c63213cd2e9ea3d25"
 
-const getInfo = (tipo, header) => {
-    const endPoint = urlBase + tipo + "?" + apiKey
+const getInfo = (quest, header) => {
+    const endPoint = URLBASE + quest + "?" + APIKEY
 
     fetch(endPoint).then((data) => {
         return data.json();
@@ -41,4 +41,19 @@ const getInfo = (tipo, header) => {
 
 
 getInfo('comics', 'title');
+
+
+const selectTipo = document.querySelector('#tipo')
+const searchResults = (select) => {
+    if (select.value == "comics") {
+        getInfo(selectTipo.value, 'title')
+    }
+    else {
+        getInfo('characters', 'name')
+    }
+}
+
+selectTipo.onchange = () => searchResults(selectTipo)
+
+
 
