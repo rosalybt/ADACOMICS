@@ -1,0 +1,35 @@
+.barra {
+  background-color: $color-secundario;
+  display: flex;
+  justify-content: center;
+  .contenedor-marca {
+    background-color: $color-terceario;
+
+    .nombre-marca {
+      font-family: $tipografia-marca;
+      font-weight: bolder;
+      line-height: 0;
+      font-size: 2.5rem;
+      padding: 5px;
+      color: $color-principal;
+    }
+  }
+}
+
+.portada {
+  position: relative;
+  background-image: url(imagenes/portada.jpg);
+  background-size: cover;
+  padding: 30vh 0;
+
+  &::before {
+    content: "";
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

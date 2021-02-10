@@ -1,0 +1,8 @@
+@import "abstract/variables", "abstract/extends", "abstract/mixins";
+
+@import "layout/header", "layout/grid", "layout/form", "layout/footer";
+
+* {
+  box-sizing: border-box;
+  font-family: $tipografia-general;
+}

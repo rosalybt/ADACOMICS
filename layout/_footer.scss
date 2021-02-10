@@ -1,0 +1,16 @@
+footer {
+  @extend %centrar;
+  background-color: $color-secundario;
+  color: $color-principal;
+  height: 25vh;
+  @include texto(_, large, lighter);
+
+  a {
+    &:visited,
+    &:link,
+    &:active {
+      text-decoration: none;
+      color: $color-principal;
+    }
+  }
+}

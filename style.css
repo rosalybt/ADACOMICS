@@ -1,11 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
-* {
-  box-sizing: border-box;
-  font-family: "Roboto", cursive;
-}
-
-footer, .pages, .card .info {
+footer, .card .info, .pages {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -54,6 +49,29 @@ main .contenedor-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.pages {
+  margin: 3rem 0 3rem 0;
+}
+.pages button {
+  border: none;
+  padding: 5px;
+  width: 45px;
+  height: 45px;
+  background-color: black;
+  color: white;
+  margin: 5px;
+  cursor: pointer;
+  color: white;
+  font-weight: lighter;
+  font-size: large;
+  color: _;
+  font-weight: _;
+  font-size: large;
+}
+.pages button:hover {
+  background-color: #e50000;
 }
 
 form {
@@ -145,29 +163,6 @@ form h2 {
   height: 100%;
   object-fit: cover;
 }
-.pages {
-  margin: 3rem 0 3rem 0;
-}
-.pages button {
-  border: none;
-  padding: 5px;
-  width: 45px;
-  height: 45px;
-  background-color: black;
-  color: white;
-  margin: 5px;
-  cursor: pointer;
-  color: white;
-  font-weight: lighter;
-  font-size: large;
-  color: _;
-  font-weight: _;
-  font-size: large;
-}
-.pages button:hover {
-  background-color: #e50000;
-}
-
 footer {
   background-color: black;
   color: white;
@@ -179,6 +174,11 @@ footer {
 footer a:visited, footer a:link, footer a:active {
   text-decoration: none;
   color: white;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", cursive;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,17 @@
+@mixin texto($color: #000, $tamanioFuente: normal, $grosor: bold) {
+  color: $color;
+  font-weight: $grosor;
+  font-size: $tamanioFuente;
+}
+
+@mixin button($colorFondo, $color, $ancho, $alto, $margen: 0) {
+  border: none;
+  padding: 5px;
+  width: $ancho;
+  height: $alto;
+  background-color: $colorFondo;
+  color: $color;
+  margin: $margen;
+  cursor: pointer;
+  @include texto($color, large, lighter);
+}
