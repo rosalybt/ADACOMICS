@@ -45,17 +45,22 @@ const getInfo = (resource, header, currentPage) => {
 getInfo('comics', 'title', currentPage);
 
 
-const selectTipo = document.querySelector('#tipo')
-const searchResults = (select) => {
-    if (select.value == "comics") {
-        getInfo(selectTipo.value, 'title')
-    }
-    else {
-        getInfo('characters', 'name')
+const typeOfResource = document.querySelector('#tipo')
+
+
+const searchResults = (resource) => {
+
+    switch (resource.value) {
+        case 'comics':
+            getInfo('comics', 'title', currentPage)
+            break;
+        default:
+            getInfo('characters', 'name', currentPage)
+            break;
     }
 }
 
-selectTipo.onchange = () => searchResults(selectTipo)
+typeOfResource.onchange = () => searchResults(typeOfResource)
 
 
 const nextPage = document.querySelector('#btn-next')
@@ -65,22 +70,22 @@ const doublePreviuosPage = document.querySelector('#btn-double-previous')
 
 nextPage.onclick = () => {
     currentPage++
-    getInfo('comics', 'title', currentPage)
+    searchResults(typeOfResource)
 }
 
 
 previousPage.onclick = () => {
     currentPage--
-    getInfo('comics', 'title', currentPage)
+    searchResults(typeOfResource)
 }
 
 doubleNextPage.onclick = () => {
     currentPage += 2
-    getInfo('comics', 'title', currentPage)
+    searchResults(typeOfResource)
 }
 
 doublePreviuosPage.onclick = () => {
     currentPage -= 2
-    getInfo('comics', 'title', currentPage)
+    searchResults(typeOfResource)
 }
 
