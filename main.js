@@ -56,4 +56,7 @@ const searchResults = (select) => {
 selectTipo.onchange = () => searchResults(selectTipo)
 
 
+const nextPage = document.querySelector('#btn-next')
+
+
 

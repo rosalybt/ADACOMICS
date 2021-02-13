@@ -1,0 +1,5 @@
+.select {
+  @include texto(_, large, bold);
+  border: none;
+  margin-left: 5px;
+}

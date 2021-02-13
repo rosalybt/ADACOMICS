@@ -1,0 +1,13 @@
+.filtro-texto {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  #input-texto {
+    border: none;
+    border-bottom: 1px solid $color-secundario;
+    margin-top: 15px;
+    padding: 5px 30px 5px 30px;
+    font-size: x-large;
+  }
+}

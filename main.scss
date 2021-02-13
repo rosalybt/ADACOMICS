@@ -2,6 +2,9 @@
 
 @import "layout/header", "layout/grid", "layout/form", "layout/footer";
 
+@import "components/input", "components/select", "components/cardCharacter",
+  "components/cardComics";
+
 * {
   box-sizing: border-box;
   font-family: $tipografia-general;
