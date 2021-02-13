@@ -60,7 +60,10 @@ const searchResults = (resource) => {
     }
 }
 
-typeOfResource.onchange = () => searchResults(typeOfResource)
+typeOfResource.onchange = () => {
+    currentPage = 0
+    searchResults(typeOfResource)
+}
 
 
 const nextPage = document.querySelector('#btn-next')
@@ -72,7 +75,6 @@ nextPage.onclick = () => {
     currentPage++
     searchResults(typeOfResource)
 }
-
 
 previousPage.onclick = () => {
     currentPage--
