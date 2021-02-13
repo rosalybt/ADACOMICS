@@ -1,9 +1,8 @@
-@import "abstract/variables", "abstract/extends", "abstract/mixins";
+@import "sass/abstract/abstracts";
 
-@import "layout/header", "layout/grid", "layout/form", "layout/footer";
+@import "sass/layout/layout";
 
-@import "components/input", "components/select", "components/cardCharacter",
-  "components/cardComics";
+@import "sass/components/components";
 
 * {
   box-sizing: border-box;
