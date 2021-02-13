@@ -2,6 +2,8 @@
 
 const URLBASE = "https://gateway.marvel.com/v1/public/"
 const APIKEY = "apikey=ab8edd3b8eb3e77c63213cd2e9ea3d25"
+const ITEM_PER_PAGE = 20
+let currentPage = 0
 
 const createCard = (cover, HTML, header) => {
 
@@ -22,8 +24,8 @@ const createCard = (cover, HTML, header) => {
 
 
 
-const getInfo = (quest, header) => {
-    const endPoint = URLBASE + quest + "?" + APIKEY
+const getInfo = (resource, header, currentPage) => {
+    const endPoint = URLBASE + resource + "?" + APIKEY + `&offset=${currentPage * ITEM_PER_PAGE}`
 
     fetch(endPoint).then((data) => {
         return data.json();
@@ -40,7 +42,7 @@ const getInfo = (quest, header) => {
 };
 
 
-getInfo('comics', 'title');
+getInfo('comics', 'title', currentPage);
 
 
 const selectTipo = document.querySelector('#tipo')
@@ -57,6 +59,12 @@ selectTipo.onchange = () => searchResults(selectTipo)
 
 
 const nextPage = document.querySelector('#btn-next')
+
+
+nextPage.onclick = () => {
+    currentPage++
+    getInfo('comics', 'title', currentPage)
+}
 
 
 
