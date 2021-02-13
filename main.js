@@ -59,7 +59,9 @@ selectTipo.onchange = () => searchResults(selectTipo)
 
 
 const nextPage = document.querySelector('#btn-next')
-
+const previousPage = document.querySelector('#btn-previous')
+const doubleNextPage = document.querySelector('#btn-double-next')
+const doublePreviuosPage = document.querySelector('#btn-double-previous')
 
 nextPage.onclick = () => {
     currentPage++
@@ -67,4 +69,18 @@ nextPage.onclick = () => {
 }
 
 
+previousPage.onclick = () => {
+    currentPage--
+    getInfo('comics', 'title', currentPage)
+}
+
+doubleNextPage.onclick = () => {
+    currentPage += 2
+    getInfo('comics', 'title', currentPage)
+}
+
+doublePreviuosPage.onclick = () => {
+    currentPage -= 2
+    getInfo('comics', 'title', currentPage)
+}
 
