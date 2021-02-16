@@ -69,41 +69,27 @@ const searchResults = (resource, orden) => {
     }
 }
 
-debugger
-const changeOptionSelect = (resource, selectMultiOp) => {
-    // console.log(selectMultiOp.options[0])
-    // console.log(selectMultiOp.options[1])
-    // console.log(selectMultiOp.options[2])
-    // console.log(selectMultiOp.options[3])
-    let asc = document.createElement('option')
-    let desc = document.createElement('option')
-    asc.setAttribute('AZ', 'name')
-    desc.setAttribute('ZA', '-name')
+
+const changeOptionsSelectBox = (resource, selectBox) => {
+
+    selectBox.options.length = 0
     if (resource.value === 'comics') {
-
-
-        selectMultiOp.options[selectMultiOp.options.length] = new Option('A-Z', 'title')
-        selectMultiOp.options[selectMultiOp.options.length] = new Option('Z-A', '-title')
-        selectMultiOp.options[selectMultiOp.options.length] = new Option('Mas nuevo', '-focDate');
-        selectMultiOp.options[selectMultiOp.options.length] = new Option('Mas viejo', 'focDate');
-
-
+        selectBox.options[selectBox.options.length] = new Option('A-Z', 'title')
+        selectBox.options[selectBox.options.length] = new Option('Z-A', '-title')
+        selectBox.options[selectBox.options.length] = new Option('Mas nuevo', '-focDate');
+        selectBox.options[selectBox.options.length] = new Option('Mas viejo', 'focDate');
 
     } else {
-        selectMultiOp.options.length = 0
-        selectMultiOp.appendChild(new Option('A-Z', 'name', true))
-        selectMultiOp.appendChild(new Option('Z-A', '-name'))
+        selectBox.appendChild(new Option('A-Z', 'name', true))
+        selectBox.appendChild(new Option('Z-A', '-name'))
     }
 
 }
 
 typeOfResource.onchange = () => {
     currentPage = 0
-    debugger
-    changeOptionSelect(typeOfResource, selectOrder)
+    changeOptionsSelectBox(typeOfResource, selectOrder)
     currentOrder = selectOrder.value
-    // debugger
-
     searchResults(typeOfResource, currentOrder)
 
 }
