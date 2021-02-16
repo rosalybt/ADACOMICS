@@ -12,7 +12,7 @@ const previousPage = document.querySelector('#btn-previous')
 const doubleNextPage = document.querySelector('#btn-double-next')
 const doublePreviuosPage = document.querySelector('#btn-double-previous')
 const selectOrder = document.querySelector('#select-order')
-
+const typeOfResource = document.querySelector('#tipo')
 
 const createCard = (cover, HTML, header) => {
 
@@ -32,7 +32,7 @@ const createCard = (cover, HTML, header) => {
 };
 
 
-
+// debugger
 const getInfo = (resource, header, currentPage, orden) => {
     const endPoint = URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` + `&orderBy=${orden}&` + APIKEY
     console.log(endPoint)
@@ -54,7 +54,7 @@ const getInfo = (resource, header, currentPage, orden) => {
 getInfo('comics', 'title', currentPage, currentOrder);
 
 
-const typeOfResource = document.querySelector('#tipo')
+
 
 
 const searchResults = (resource, orden) => {
@@ -63,15 +63,49 @@ const searchResults = (resource, orden) => {
         case 'comics':
             getInfo('comics', 'title', currentPage, orden)
             break;
-        default:
+        case 'personajes':
             getInfo('characters', 'name', currentPage, orden)
             break;
     }
 }
 
+debugger
+const changeOptionSelect = (resource, selectMultiOp) => {
+    // console.log(selectMultiOp.options[0])
+    // console.log(selectMultiOp.options[1])
+    // console.log(selectMultiOp.options[2])
+    // console.log(selectMultiOp.options[3])
+    let asc = document.createElement('option')
+    let desc = document.createElement('option')
+    asc.setAttribute('AZ', 'name')
+    desc.setAttribute('ZA', '-name')
+    if (resource.value === 'comics') {
+
+
+        selectMultiOp.options[selectMultiOp.options.length] = new Option('A-Z', 'title')
+        selectMultiOp.options[selectMultiOp.options.length] = new Option('Z-A', '-title')
+        selectMultiOp.options[selectMultiOp.options.length] = new Option('Mas nuevo', '-focDate');
+        selectMultiOp.options[selectMultiOp.options.length] = new Option('Mas viejo', 'focDate');
+
+
+
+    } else {
+        selectMultiOp.options.length = 0
+        selectMultiOp.appendChild(new Option('A-Z', 'name', true))
+        selectMultiOp.appendChild(new Option('Z-A', '-name'))
+    }
+
+}
+
 typeOfResource.onchange = () => {
     currentPage = 0
+    debugger
+    changeOptionSelect(typeOfResource, selectOrder)
+    currentOrder = selectOrder.value
+    // debugger
+
     searchResults(typeOfResource, currentOrder)
+
 }
 
 
