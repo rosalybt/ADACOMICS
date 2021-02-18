@@ -11,9 +11,9 @@ const nextPage = document.querySelector('#btn-next')
 const previousPage = document.querySelector('#btn-previous')
 const doubleNextPage = document.querySelector('#btn-double-next')
 const doublePreviuosPage = document.querySelector('#btn-double-previous')
-const selectOrder = document.querySelector('#select-order')
+const selectBoxOrder = document.querySelector('#select-order')
 const typeOfResource = document.querySelector('#tipo')
-
+const texto = document.querySelector('#input-texto')
 const createCard = (cover, HTML, header) => {
 
     cover.forEach((info) => {
@@ -31,12 +31,20 @@ const createCard = (cover, HTML, header) => {
 
 };
 
+const createURL = (resource, currentPage, orden, inputText) => {
+    if (inputText.trim() != '') {
+        return URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` +
+            `&orderBy=${orden}` + `&titleStartsWith=${inputText}&` + APIKEY
+    }
 
-// debugger
-const getInfo = (resource, header, currentPage, orden) => {
-    const endPoint = URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` + `&orderBy=${orden}&` + APIKEY
-    console.log(endPoint)
-    fetch(endPoint).then((data) => {
+    return URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` +
+        `&orderBy=${orden}&` + APIKEY
+}
+
+const getInfo = (resource, header, currentPage, orden, inputText) => {
+    let url = createURL(resource, currentPage, orden, inputText)
+
+    fetch(url).then((data) => {
         return data.json();
     }).then((elements) => {
         const listOfElements = elements.data.results
@@ -51,20 +59,17 @@ const getInfo = (resource, header, currentPage, orden) => {
 };
 
 
-getInfo('comics', 'title', currentPage, currentOrder);
+getInfo('comics', 'title', currentPage, currentOrder, texto.value);
 
 
-
-
-
-const searchResults = (resource, orden) => {
+const searchResults = (resource, orden, inputText) => {
 
     switch (resource.value) {
         case 'comics':
-            getInfo('comics', 'title', currentPage, orden)
+            getInfo('comics', 'title', currentPage, orden, inputText)
             break;
         case 'personajes':
-            getInfo('characters', 'name', currentPage, orden)
+            getInfo('characters', 'name', currentPage, orden, inputText)
             break;
     }
 }
@@ -88,35 +93,35 @@ const changeOptionsSelectBox = (resource, selectBox) => {
 
 typeOfResource.onchange = () => {
     currentPage = 0
-    changeOptionsSelectBox(typeOfResource, selectOrder)
-    currentOrder = selectOrder.value
-    searchResults(typeOfResource, currentOrder)
+    changeOptionsSelectBox(typeOfResource, selectBoxOrder)
+    currentOrder = selectBoxOrder.value
+    // searchResults(typeOfResource, currentOrder, texto.value)
 
 }
 
 
 nextPage.onclick = () => {
     currentPage++
-    searchResults(typeOfResource, currentOrder)
+    searchResults(typeOfResource, currentOrder, texto.value)
 }
 
 previousPage.onclick = () => {
     currentPage--
-    searchResults(typeOfResource, currentOrder)
+    searchResults(typeOfResource, currentOrder, texto.value)
 }
 
 doubleNextPage.onclick = () => {
     currentPage += 2
-    searchResults(typeOfResource, currentOrder)
+    searchResults(typeOfResource, currentOrder, texto.value)
 }
 
 doublePreviuosPage.onclick = () => {
     currentPage -= 2
-    searchResults(typeOfResource, currentOrder)
+    searchResults(typeOfResource, currentOrder, texto.value)
 }
 
-selectOrder.onchange = () => {
-    currentOrder = selectOrder.value
-    searchResults(typeOfResource, currentOrder)
+selectBoxOrder.onchange = () => {
+    currentOrder = selectBoxOrder.value
+    searchResults(typeOfResource, currentOrder, texto.value)
 }
 
