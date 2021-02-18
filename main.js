@@ -49,7 +49,6 @@ const createURL = (resource, currentPage, orden, userSearch) => {
             `&orderBy=${orden}&` + APIKEY
     }
 
-
 }
 
 const getInfo = (resource, header, currentPage, orden, inputTextValue) => {
@@ -59,19 +58,17 @@ const getInfo = (resource, header, currentPage, orden, inputTextValue) => {
         return data.json();
     }).then((elements) => {
         const listOfElements = elements.data.results
-        const results = document.querySelector('.resultados')
+        const totalResults = document.querySelector('.total-results-showed')
         const containerCards = document.querySelector('.contenedor-cards')
 
         containerCards.innerHTML = ''
-        results.innerHTML = ''
-        results.innerHTML = elements.data.total
+        totalResults.innerHTML = ''
+        totalResults.innerHTML = elements.data.total
         createCard(listOfElements, containerCards, header);
     })
 };
 
-
 getInfo('comics', 'title', currentPage, currentOrder, inputText.value);
-
 
 const searchResults = (resource, orden, inputText) => {
 
@@ -85,15 +82,15 @@ const searchResults = (resource, orden, inputText) => {
     }
 }
 
-
 const changeOptionsSelectBox = (resource, selectBox) => {
 
     selectBox.options.length = 0
     if (resource.value === 'comics') {
-        selectBox.options[selectBox.options.length] = new Option('A-Z', 'title')
-        selectBox.options[selectBox.options.length] = new Option('Z-A', '-title')
-        selectBox.options[selectBox.options.length] = new Option('Mas nuevo', '-focDate');
-        selectBox.options[selectBox.options.length] = new Option('Mas viejo', 'focDate');
+
+        selectBox.appendChild(new Option('A-Z', 'title'))
+        selectBox.appendChild(new Option('Z-A', '-title'))
+        selectBox.appendChild(new Option('Mas nuevo', '-focDate'))
+        selectBox.appendChild(new Option('Mas viejo', 'focDate'))
 
     } else {
         selectBox.appendChild(new Option('A-Z', 'name', true))
