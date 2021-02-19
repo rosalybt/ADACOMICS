@@ -35,7 +35,7 @@ const createCard = (cover, HTML, header) => {
         </article>
         `
     });
-
+    checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 };
 
 const createURL = (resource, currentPage, orden, userSearch) => {
@@ -55,6 +55,25 @@ const createURL = (resource, currentPage, orden, userSearch) => {
 
 }
 
+const disable = (element) => {
+    element.disabled = true
+    element.classList.add('disable')
+}
+const enable = (element) => {
+    element.disabled = false
+    element.classList.remove('disable')
+}
+debugger
+const checkPaging = (nextPage, doubleNextPage, previousPage, doublePreviuosPage) => {
+    if (remainingResults <= 0 && currentPage >= 0) {
+        disable(nextPage)
+        disable(doubleNextPage)
+    } else {
+        enable(nextPage)
+        enable(doubleNextPage)
+    }
+}
+
 const getInfo = (resource, header, currentPage, orden, inputTextValue) => {
     let url = createURL(resource, currentPage, orden, inputTextValue)
 
@@ -68,23 +87,13 @@ const getInfo = (resource, header, currentPage, orden, inputTextValue) => {
         totalResults.innerHTML = elements.data.total
         remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
         createCard(listOfElements, containerCards, header);
-        console.log(remainingResults)
+        console.log(remainingResults, currentPage)
     })
-    // debugger
 
 };
 
 
-const disable = (element) => {
-    element.classList.add('disable')
-}
-// nextPage.classList.add('disable')
-disable(nextPage)
-const checkPaging = () => {
-    if (remainingResults <= 0) {
 
-    }
-}
 
 getInfo('comics', 'title', currentPage, currentOrder, inputText.value);
 
@@ -98,6 +107,7 @@ const searchResults = (resource, orden, inputText) => {
             getInfo('characters', 'name', currentPage, orden, inputText)
             break;
     }
+    // checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 }
 
 const changeOptionsSelectBox = (resource, selectBox) => {
@@ -126,6 +136,7 @@ typeOfResource.onchange = () => {
 nextPage.onclick = () => {
     currentPage++
     searchResults(typeOfResource, currentOrder, inputText.value)
+    // checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 }
 
 previousPage.onclick = () => {
@@ -134,19 +145,21 @@ previousPage.onclick = () => {
 
 }
 
-console.log(remainingResults)
+// console.log(remainingResults)
 doubleNextPage.onclick = () => {
     currentPage += 2
     searchResults(typeOfResource, currentOrder, inputText.value)
 
     // const containerCardsTotal = document.querySelectorAll('.cards')
-    remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
-    if (remainingResults < 20) {
-        console.log('deshabilito')
-    } else {
-        console.log('habilito')
-    }
-    console.log(remainingResults)
+    // remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
+    // if (remainingResults < 20) {
+    //     console.log('deshabilito')
+    // } else {
+    //     console.log('habilito')
+    // }
+    // console.log(remainingResults)
+
+    // checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 }
 
 doublePreviuosPage.onclick = () => {
@@ -160,6 +173,6 @@ form.onsubmit = (e) => {
     e.preventDefault()
     searchResults(typeOfResource, currentOrder, inputText.value)
     // remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
-    console.log(totalResults)
-    console.log(remainingResults)
+    // console.log(totalResults)
+    // console.log(remainingResults)
 }

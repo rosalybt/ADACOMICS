@@ -1,6 +1,7 @@
 .disable {
   color: $color-deshabilitado !important;
+  &:hover {
+    background-color: $color-secundario !important;
+    cursor: text;
+  }
 }
-
-// .btn-buscar {
-// }

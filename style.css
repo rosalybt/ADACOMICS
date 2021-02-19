@@ -144,6 +144,10 @@ footer a:visited, footer a:link, footer a:active {
 .disable {
   color: #808080 !important;
 }
+.disable:hover {
+  background-color: black !important;
+  cursor: text;
+}
 
 .card {
   width: 230px;
