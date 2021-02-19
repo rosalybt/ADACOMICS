@@ -14,7 +14,7 @@ main {
   margin: 3rem 0 3rem 0;
   button {
     @include button($color-secundario, $color-principal, 45px, 45px, 5px);
-    @include texto(_, large, _);
+    @include texto(_, x-large, _);
     &:hover {
       background-color: $color-terceario;
     }

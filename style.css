@@ -122,7 +122,7 @@ main .contenedor-cards {
   font-size: large;
   color: _;
   font-weight: _;
-  font-size: large;
+  font-size: x-large;
 }
 .pages button:hover {
   background-color: #e50000;
@@ -139,6 +139,10 @@ footer {
 footer a:visited, footer a:link, footer a:active {
   text-decoration: none;
   color: white;
+}
+
+.disable {
+  color: #808080 !important;
 }
 
 .card {

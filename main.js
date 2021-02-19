@@ -6,6 +6,8 @@ const ITEM_PER_PAGE = 20
 
 let currentPage = 0
 let currentOrder = 'title'
+let totalResultsDisplayed = 0
+let remainingResults = 0
 
 const nextPage = document.querySelector('#btn-next')
 const previousPage = document.querySelector('#btn-previous')
@@ -14,6 +16,8 @@ const doublePreviuosPage = document.querySelector('#btn-double-previous')
 const selectBoxOrder = document.querySelector('#select-order')
 const typeOfResource = document.querySelector('#tipo')
 const inputText = document.querySelector('#input-texto')
+const totalResults = document.querySelector('.total-results-showed')
+const containerCards = document.querySelector('.contenedor-cards')
 const form = document.querySelector('#form')
 
 
@@ -58,15 +62,29 @@ const getInfo = (resource, header, currentPage, orden, inputTextValue) => {
         return data.json();
     }).then((elements) => {
         const listOfElements = elements.data.results
-        const totalResults = document.querySelector('.total-results-showed')
-        const containerCards = document.querySelector('.contenedor-cards')
 
         containerCards.innerHTML = ''
         totalResults.innerHTML = ''
         totalResults.innerHTML = elements.data.total
+        remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
         createCard(listOfElements, containerCards, header);
+        console.log(remainingResults)
     })
+    // debugger
+
 };
+
+
+const disable = (element) => {
+    element.classList.add('disable')
+}
+// nextPage.classList.add('disable')
+disable(nextPage)
+const checkPaging = () => {
+    if (remainingResults <= 0) {
+
+    }
+}
 
 getInfo('comics', 'title', currentPage, currentOrder, inputText.value);
 
@@ -113,11 +131,22 @@ nextPage.onclick = () => {
 previousPage.onclick = () => {
     currentPage--
     searchResults(typeOfResource, currentOrder, inputText.value)
+
 }
 
+console.log(remainingResults)
 doubleNextPage.onclick = () => {
     currentPage += 2
     searchResults(typeOfResource, currentOrder, inputText.value)
+
+    // const containerCardsTotal = document.querySelectorAll('.cards')
+    remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
+    if (remainingResults < 20) {
+        console.log('deshabilito')
+    } else {
+        console.log('habilito')
+    }
+    console.log(remainingResults)
 }
 
 doublePreviuosPage.onclick = () => {
@@ -130,4 +159,7 @@ selectBoxOrder.onchange = () => currentOrder = selectBoxOrder.value
 form.onsubmit = (e) => {
     e.preventDefault()
     searchResults(typeOfResource, currentOrder, inputText.value)
+    // remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
+    console.log(totalResults)
+    console.log(remainingResults)
 }

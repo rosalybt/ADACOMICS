@@ -4,7 +4,7 @@
   font-size: $tamanioFuente;
 }
 
-@mixin button($colorFondo, $color, $ancho, $alto, $margen: 0) {
+@mixin button($colorFondo, $color, $ancho, $alto, $margen: 0, $tamanio: large) {
   border: none;
   padding: 5px;
   width: $ancho;
@@ -13,5 +13,5 @@
   color: $color;
   margin: $margen;
   cursor: pointer;
-  @include texto($color, large, lighter);
+  @include texto($color, $tamanio, lighter);
 }
