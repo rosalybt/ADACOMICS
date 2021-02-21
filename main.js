@@ -1,8 +1,8 @@
 
-
 const URLBASE = "https://gateway.marvel.com/v1/public/"
 const APIKEY = "apikey=ab8edd3b8eb3e77c63213cd2e9ea3d25"
 const ITEM_PER_PAGE = 20
+// ITEM_PER_PAGE ---> shows a maximum of 20 results per page
 
 let currentPage = 0
 let currentOrder = 'title'
@@ -63,19 +63,44 @@ const enable = (element) => {
     element.disabled = false
     element.classList.remove('disable')
 }
-debugger
+
 const checkPaging = (nextPage, doubleNextPage, previousPage, doublePreviuosPage) => {
-    if (remainingResults <= 0 && currentPage >= 0) {
+
+    let results = parseInt(totalResults.textContent)
+
+    /*next options*/
+    if (remainingResults <= 0) {
         disable(nextPage)
-        disable(doubleNextPage)
     } else {
         enable(nextPage)
+    }
+
+    if (remainingResults <= ITEM_PER_PAGE) {
+        disable(doubleNextPage)
+    } else {
         enable(doubleNextPage)
     }
+
+    /*Previuos opstions*/
+    if ((remainingResults + ITEM_PER_PAGE) === results) {
+        disable(previousPage)
+        disable(doublePreviuosPage)
+    } else {
+        enable(previousPage)
+    }
+    //if remainingResult is less than results minus 40 (two pages) then enable the button
+    if (remainingResults < (results - ITEM_PER_PAGE * 2)) {
+        enable(doublePreviuosPage)
+    }
+
 }
 
-const getInfo = (resource, header, currentPage, orden, inputTextValue) => {
-    let url = createURL(resource, currentPage, orden, inputTextValue)
+const calculateRemainingResults = () => {
+    remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
+}
+
+const getInfo = (resource, header, orden, inputTextValue) => {
+    let url = createURL(resource, orden, inputTextValue)
 
     fetch(url).then((data) => {
         return data.json();
@@ -85,9 +110,8 @@ const getInfo = (resource, header, currentPage, orden, inputTextValue) => {
         containerCards.innerHTML = ''
         totalResults.innerHTML = ''
         totalResults.innerHTML = elements.data.total
-        remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
+        calculateRemainingResults()
         createCard(listOfElements, containerCards, header);
-        console.log(remainingResults, currentPage)
     })
 
 };
@@ -95,19 +119,18 @@ const getInfo = (resource, header, currentPage, orden, inputTextValue) => {
 
 
 
-getInfo('comics', 'title', currentPage, currentOrder, inputText.value);
+getInfo('comics', 'title', currentOrder, inputText.value);
 
 const searchResults = (resource, orden, inputText) => {
 
     switch (resource.value) {
         case 'comics':
-            getInfo('comics', 'title', currentPage, orden, inputText)
+            getInfo('comics', 'title', orden, inputText)
             break;
         case 'personajes':
-            getInfo('characters', 'name', currentPage, orden, inputText)
+            getInfo('characters', 'name', orden, inputText)
             break;
     }
-    // checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 }
 
 const changeOptionsSelectBox = (resource, selectBox) => {
@@ -136,30 +159,16 @@ typeOfResource.onchange = () => {
 nextPage.onclick = () => {
     currentPage++
     searchResults(typeOfResource, currentOrder, inputText.value)
-    // checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 }
 
 previousPage.onclick = () => {
     currentPage--
     searchResults(typeOfResource, currentOrder, inputText.value)
-
 }
 
-// console.log(remainingResults)
 doubleNextPage.onclick = () => {
     currentPage += 2
     searchResults(typeOfResource, currentOrder, inputText.value)
-
-    // const containerCardsTotal = document.querySelectorAll('.cards')
-    // remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
-    // if (remainingResults < 20) {
-    //     console.log('deshabilito')
-    // } else {
-    //     console.log('habilito')
-    // }
-    // console.log(remainingResults)
-
-    // checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 }
 
 doublePreviuosPage.onclick = () => {
@@ -172,7 +181,4 @@ selectBoxOrder.onchange = () => currentOrder = selectBoxOrder.value
 form.onsubmit = (e) => {
     e.preventDefault()
     searchResults(typeOfResource, currentOrder, inputText.value)
-    // remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
-    // console.log(totalResults)
-    // console.log(remainingResults)
 }
