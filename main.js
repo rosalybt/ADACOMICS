@@ -38,7 +38,7 @@ const createCard = (cover, HTML, header) => {
     checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 };
 
-const createURL = (resource, currentPage, orden, userSearch) => {
+const createURL = (resource, orden, userSearch) => {
 
     if (userSearch.trim() != '' && resource === 'comics') {
         return URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` +
@@ -115,9 +115,6 @@ const getInfo = (resource, header, orden, inputTextValue) => {
     })
 
 };
-
-
-
 
 getInfo('comics', 'title', currentOrder, inputText.value);
 
