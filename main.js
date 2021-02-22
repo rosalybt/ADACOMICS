@@ -177,5 +177,6 @@ selectBoxOrder.onchange = () => currentOrder = selectBoxOrder.value
 
 form.onsubmit = (e) => {
     e.preventDefault()
+    remainingResults = 0
     searchResults(typeOfResource, currentOrder, inputText.value)
 }
