@@ -19,13 +19,14 @@ const inputText = document.querySelector('#input-texto')
 const totalResults = document.querySelector('.total-results-showed')
 const containerCards = document.querySelector('.contenedor-cards')
 const form = document.querySelector('#form')
+const moreInfoSection = document.querySelector('.more-info')
 
 
 const createCard = (cover, HTML, header) => {
 
     cover.forEach((info) => {
         HTML.innerHTML += `
-        <article class="card">
+        <article class="card" data-id= ${info.id} data-resource = "${typeOfResource.value}">
             <div class="imagen">
                 <img src="${info.thumbnail.path + "." + info.thumbnail.extension}" alt="">
             </div>
@@ -35,20 +36,92 @@ const createCard = (cover, HTML, header) => {
         </article>
         `
     });
+    addOnClickEventToACard()
     checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 };
 
-const createURL = (resource, orden, userSearch) => {
+const addOnClickEventToACard = () => {
+    const cards = document.querySelectorAll('.card')
 
-    if (userSearch.trim() != '' && resource === 'comics') {
+    cards.forEach(card => {
+        card.onclick = () => {
+            let resource = card.dataset.resource
+            let id = card.dataset.id
+            showMoreInfoResource(resource, id)
+        }
+    })
+
+}
+
+const getInfoUniqueResource = (resource, id) => {
+
+    let url = createURL(resource, null, '', id)
+    fetch(url).then((data) => {
+        return data.json();
+    }).then((element) => {
+        // return element.data.results[0]
+        createCardMoreInfo(element.data.results[0], resource)
+        // console.log(element.data.results[0])
+    })
+}
+
+const createCardMoreInfo = (info, resource) => {
+
+    moreInfoSection.innerHTML = ''
+    console.log(resource)
+    if (resource === 'comics') {
+        console.log(info.thumbnail.path + "." + info.thumbnail.extension)
+        moreInfoSection.innerHTML = ` 
+         <div>
+            <img src="${info.thumbnail.path + "." + info.thumbnail.extension}" alt="cover">
+         </div>
+
+         <div class="info">
+            <h2 class="titulo">${info.title}</h2>
+            <h3>publicado:</h3>
+            <p class="publication-date">${info.dates[0].date}</p>
+            <h3>Guionista(s):</h3>
+            <p class="scriptwriter">${info.creators.items[0]}</p>
+            <h3>Descripcion:</h3>
+            <p class="description">${info.description}</p>
+         </div>`
+
+    } else {
+        moreInfoSection.innerHTML = ` 
+            <div>
+                <img src="" alt="">
+            </div>
+
+            <div class="info">
+                <h2 class="name">hola</h2>
+                <h3>Descripcion:</h3>
+                <p class="description"></p>
+           </div>`
+    }
+
+}
+
+
+const showMoreInfoResource = (resource, id) => {
+
+    getInfoUniqueResource(resource, id)
+    // createCardMoreInfo(element, resource)
+
+}
+
+const createURL = (resource, orden, userSearch, id) => {
+    if (id) {
+        return URLBASE + resource + "/" + id + "?" + APIKEY
+    }
+    else if (userSearch.trim() && resource === 'comics') {
         return URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` +
             `&orderBy=${orden}` + `&titleStartsWith=${userSearch}&` + APIKEY
 
-    } else if (userSearch.trim() != '' && resource === 'characters') {
+    } else if (userSearch.trim() && resource === 'characters') {
         return URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` +
             `&orderBy=${orden}` + `&nameStartsWith=${userSearch}&` + APIKEY
 
-    } else {
+    } else if (!userSearch.trim()) {
         return URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` +
             `&orderBy=${orden}&` + APIKEY
     }
