@@ -68,7 +68,7 @@ const getInfoUniqueResource = (resource, id) => {
 const createCardMoreInfo = (info, resource) => {
 
     moreInfoSection.innerHTML = ''
-    console.log(resource)
+
     if (resource === 'comics') {
         console.log(info.thumbnail.path + "." + info.thumbnail.extension)
         moreInfoSection.innerHTML = ` 
@@ -89,25 +89,22 @@ const createCardMoreInfo = (info, resource) => {
     } else {
         moreInfoSection.innerHTML = ` 
             <div>
-                <img src="" alt="">
+                <img src="${info.thumbnail.path + "." + info.thumbnail.extension}" alt="cover">
             </div>
 
             <div class="info">
-                <h2 class="name">hola</h2>
+                <h2 class="name">${info.name}</h2>
                 <h3>Descripcion:</h3>
-                <p class="description"></p>
+                <p class="description">${info.description}</p>
            </div>`
     }
 
 }
 
 
-const showMoreInfoResource = (resource, id) => {
+const showMoreInfoResource = (resource, id) => getInfoUniqueResource(resource, id)
 
-    getInfoUniqueResource(resource, id)
-    // createCardMoreInfo(element, resource)
 
-}
 
 const createURL = (resource, orden, userSearch, id) => {
     if (id) {
@@ -197,7 +194,7 @@ const searchResults = (resource, orden, inputText) => {
         case 'comics':
             getInfo('comics', 'title', orden, inputText)
             break;
-        case 'personajes':
+        case 'characters':
             getInfo('characters', 'name', orden, inputText)
             break;
     }
