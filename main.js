@@ -22,9 +22,9 @@ const form = document.querySelector('#form')
 const moreInfoSection = document.querySelector('.more-info')
 
 
-const createCard = (cover, HTML) => {
+const createCard = (covers, HTML) => {
 
-    cover.forEach((info) => {
+    covers.forEach((info) => {
         const header = info.title ? 'title' : 'name'
         HTML.innerHTML += `
         <article class="card" data-id= ${info.id} data-resource = "${typeOfResource.value}">
@@ -74,7 +74,7 @@ const createCardMoreInfo = (info, resource) => {
 
     if (resource === 'comics') {
         const date = new Intl.DateTimeFormat('es-DO').format(info.dates[0].date.type)
-        const creators = info.creators.available > 0 ? info.creators.items[0].name : 'No se han encontrado resultados'
+        const creators = info.creators.returned > 0 ? info.creators.items[0].name : ''
 
         moreInfoSection.innerHTML = ` 
          <div>
@@ -84,11 +84,11 @@ const createCardMoreInfo = (info, resource) => {
          <div class="info">
             <h2 class="titulo">${info.title}</h2>
             <h3>publicado:</h3>
-            <p class="publication-date">${date}</p>
+            <p class="publication-date">${date ? date : ''}</p>
             <h3>Guionista(s):</h3>
-            <p class="scriptwriter">${creators}</p>
+            <p class="scriptwriter">${creators ? creators : ''}</p>
             <h3>Descripcion:</h3>
-            <p class="description">${info.description}</p>
+            <p class="description">${info.description ? info.description : ''}</p>
          </div>`
 
     } else {
@@ -101,7 +101,7 @@ const createCardMoreInfo = (info, resource) => {
             <div class="info">
                 <h2 class="name">${info.name}</h2>
                 <h3>Descripcion:</h3>
-                <p class="description">${info.description}</p>
+                <p class="description">${info.description ? info.description : ''}</p>
            </div>`
     }
 
@@ -184,12 +184,16 @@ const getInfo = (url) => {
         totalResults.innerHTML = ''
         totalResults.innerHTML = elements.data.total
         calculateRemainingResults()
-        createCard(listOfElements, containerCards);
+
+        if (listOfElements.length) createCard(listOfElements, containerCards);
+        else containerCards.innerHTML = '<h3>No se han encontrado resultados</h3>';
+
+
     })
 
 };
 
-getInfo('https://gateway.marvel.com/v1/public/comics?offset=0&orderBy=title&' + APIKEY);
+getInfo(URLBASE + 'comics?offset=0&orderBy=title&' + APIKEY);
 
 const searchResults = (resource, orden, inputText) => {
 
