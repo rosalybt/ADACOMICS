@@ -67,10 +67,11 @@ const getInfoUniqueResource = (resource, id) => {
 
 const createCardMoreInfo = (info, resource) => {
 
+    const date = new Intl.DateTimeFormat('es-AR').format(info.dates[0].date.type)
     moreInfoSection.innerHTML = ''
 
     if (resource === 'comics') {
-        console.log(info.thumbnail.path + "." + info.thumbnail.extension)
+
         moreInfoSection.innerHTML = ` 
          <div>
             <img src="${info.thumbnail.path + "." + info.thumbnail.extension}" alt="cover">
@@ -79,9 +80,9 @@ const createCardMoreInfo = (info, resource) => {
          <div class="info">
             <h2 class="titulo">${info.title}</h2>
             <h3>publicado:</h3>
-            <p class="publication-date">${info.dates[0].date}</p>
+            <p class="publication-date">${date}</p>
             <h3>Guionista(s):</h3>
-            <p class="scriptwriter">${info.creators.items[0]}</p>
+            <p class="scriptwriter">${info.creators.items[0].name}</p>
             <h3>Descripcion:</h3>
             <p class="description">${info.description}</p>
          </div>`
