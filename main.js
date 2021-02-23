@@ -60,18 +60,21 @@ const getInfoUniqueResource = (resource, id) => {
     fetch(url).then((data) => {
         return data.json();
     }).then((element) => {
-        createCardMoreInfo(element.data.results[0], resource)
-        getInfo(element.data.results[0].characters.collectionURI + "?" + APIKEY)
+        const data = element.data.results[0]
+        const result = data.comics || data.characters
+
+        createCardMoreInfo(data, resource)
+        getInfo(result.collectionURI + "?" + APIKEY)
     })
 }
 
 const createCardMoreInfo = (info, resource) => {
-
+    console.log(info)
     moreInfoSection.innerHTML = ''
 
     if (resource === 'comics') {
         const date = new Intl.DateTimeFormat('es-DO').format(info.dates[0].date.type)
-        const creators = info.creators.available > 0 ? info.creators.items[0].name : 'no Tiene'
+        const creators = info.creators.available > 0 ? info.creators.items[0].name : 'No se han encontrado resultados'
 
         moreInfoSection.innerHTML = ` 
          <div>
