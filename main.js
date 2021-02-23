@@ -22,9 +22,10 @@ const form = document.querySelector('#form')
 const moreInfoSection = document.querySelector('.more-info')
 
 
-const createCard = (cover, HTML, header) => {
+const createCard = (cover, HTML) => {
 
     cover.forEach((info) => {
+        const header = info.title ? 'title' : 'name'
         HTML.innerHTML += `
         <article class="card" data-id= ${info.id} data-resource = "${typeOfResource.value}">
             <div class="imagen">
@@ -59,18 +60,18 @@ const getInfoUniqueResource = (resource, id) => {
     fetch(url).then((data) => {
         return data.json();
     }).then((element) => {
-        // return element.data.results[0]
         createCardMoreInfo(element.data.results[0], resource)
-        // console.log(element.data.results[0])
+        getInfo(element.data.results[0].characters.collectionURI + "?" + APIKEY)
     })
 }
 
 const createCardMoreInfo = (info, resource) => {
 
-    const date = new Intl.DateTimeFormat('es-AR').format(info.dates[0].date.type)
     moreInfoSection.innerHTML = ''
 
     if (resource === 'comics') {
+        const date = new Intl.DateTimeFormat('es-DO').format(info.dates[0].date.type)
+        const creators = info.creators.available > 0 ? info.creators.items[0].name : 'no Tiene'
 
         moreInfoSection.innerHTML = ` 
          <div>
@@ -82,12 +83,13 @@ const createCardMoreInfo = (info, resource) => {
             <h3>publicado:</h3>
             <p class="publication-date">${date}</p>
             <h3>Guionista(s):</h3>
-            <p class="scriptwriter">${info.creators.items[0].name}</p>
+            <p class="scriptwriter">${creators}</p>
             <h3>Descripcion:</h3>
             <p class="description">${info.description}</p>
          </div>`
 
     } else {
+
         moreInfoSection.innerHTML = ` 
             <div>
                 <img src="${info.thumbnail.path + "." + info.thumbnail.extension}" alt="cover">
@@ -102,10 +104,7 @@ const createCardMoreInfo = (info, resource) => {
 
 }
 
-
 const showMoreInfoResource = (resource, id) => getInfoUniqueResource(resource, id)
-
-
 
 const createURL = (resource, orden, userSearch, id) => {
     if (id) {
@@ -125,6 +124,7 @@ const createURL = (resource, orden, userSearch, id) => {
     }
 
 }
+
 
 const disable = (element) => {
     element.disabled = true
@@ -170,8 +170,7 @@ const calculateRemainingResults = () => {
     remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
 }
 
-const getInfo = (resource, header, orden, inputTextValue) => {
-    let url = createURL(resource, orden, inputTextValue)
+const getInfo = (url) => {
 
     fetch(url).then((data) => {
         return data.json();
@@ -182,21 +181,22 @@ const getInfo = (resource, header, orden, inputTextValue) => {
         totalResults.innerHTML = ''
         totalResults.innerHTML = elements.data.total
         calculateRemainingResults()
-        createCard(listOfElements, containerCards, header);
+        createCard(listOfElements, containerCards);
     })
 
 };
 
-getInfo('comics', 'title', currentOrder, inputText.value);
+getInfo('https://gateway.marvel.com/v1/public/comics?offset=0&orderBy=title&' + APIKEY);
 
 const searchResults = (resource, orden, inputText) => {
 
+    let url = createURL(resource.value, orden, inputText)
     switch (resource.value) {
         case 'comics':
-            getInfo('comics', 'title', orden, inputText)
+            getInfo(url)
             break;
         case 'characters':
-            getInfo('characters', 'name', orden, inputText)
+            getInfo(url)
             break;
     }
 }
