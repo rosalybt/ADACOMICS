@@ -19,8 +19,9 @@ const inputText = document.querySelector('#input-texto')
 const totalResults = document.querySelector('.total-results-showed')
 const containerCards = document.querySelector('.contenedor-cards')
 const form = document.querySelector('#form')
+const containerMoreInfo = document.querySelector('.container-more-info')
 const moreInfoSection = document.querySelector('.more-info')
-
+const btnBack = document.querySelector('.btn-back')
 
 const createCard = (covers, HTML) => {
 
@@ -69,7 +70,7 @@ const getInfoUniqueResource = (resource, id) => {
 }
 
 const createCardMoreInfo = (info, resource) => {
-    console.log(info)
+    show(containerMoreInfo)
     moreInfoSection.innerHTML = ''
 
     if (resource === 'comics') {
@@ -137,6 +138,9 @@ const enable = (element) => {
     element.disabled = false
     element.classList.remove('disable')
 }
+
+const hide = (element) => element.classList.add('hidden')
+const show = (element) => element.classList.remove('hidden')
 
 const checkPaging = (nextPage, doubleNextPage, previousPage, doublePreviuosPage) => {
 
@@ -257,4 +261,9 @@ form.onsubmit = (e) => {
     e.preventDefault()
     remainingResults = 0
     searchResults(typeOfResource, currentOrder, inputText.value)
+}
+
+btnBack.onclick = () => {
+    searchResults(typeOfResource, currentOrder, inputText.value)
+    hide(containerMoreInfo)
 }
