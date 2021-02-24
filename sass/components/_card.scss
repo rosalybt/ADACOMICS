@@ -1,21 +1,39 @@
 .card {
   width: 230px;
   margin-bottom: 30px;
-
+  // position: relative;
   h3 {
     margin: 0;
   }
   .imagen {
     width: 100%;
     height: 350px;
+    position: relative;
+    box-shadow: 0 26px 24px -16px ($color-sombra);
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      position: relative;
+      right: 0;
+      top: 0;
     }
+    transform: translateY(0);
+    transition: 0.5s ease;
   }
   .info {
+    padding-top: 25px;
     @extend %centrar;
+  }
+
+  &:hover {
+    .imagen {
+      transform: translateY(-20px);
+      transition: 0.5s ease;
+    }
+
+    .info {
+      color: $color-terceario;
+    }
   }
 }
 

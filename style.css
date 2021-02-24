@@ -193,12 +193,29 @@ footer a:visited, footer a:link, footer a:active {
 .card .imagen {
   width: 100%;
   height: 350px;
+  position: relative;
+  box-shadow: 0 26px 24px -16px #686868;
+  transform: translateY(0);
+  transition: 0.5s ease;
 }
 .card .imagen img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  position: relative;
+  right: 0;
+  top: 0;
 }
+.card .info {
+  padding-top: 25px;
+}
+.card:hover .imagen {
+  transform: translateY(-20px);
+  transition: 0.5s ease;
+}
+.card:hover .info {
+  color: #e50000;
+}
+
 .comic-card img {
   width: 100%;
   height: 100%;
