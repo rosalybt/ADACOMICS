@@ -27,17 +27,18 @@ const titleResults = document.querySelector('.title-result')
 const createCard = (covers, HTML) => {
 
     covers.forEach((info) => {
+
         const header = info.title ? 'title' : 'name'
         HTML.innerHTML += `
         <article class="card" data-id= ${info.id} data-resource = "${typeOfResource.value}">
             <div class="imagen">
-                <img src="${info.thumbnail.path + "." + info.thumbnail.extension}" alt="">
-            </div>
-            <div class="info">
-                <h3 class="nombre">${info[header]}</h3>
-            </div>
-        </article>
-        `
+                <img src="${info.thumbnail.path + "/portrait_uncanny." + info.thumbnail.extension}" alt="">
+            </div >
+    <div class="info">
+        <h3 class="nombre">${info[header]}</h3>
+    </div>
+        </article >
+    `
     });
     addOnClickEventToACard()
     checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
@@ -79,33 +80,33 @@ const createCardMoreInfo = (info, resource) => {
         const creators = info.creators.returned > 0 ? info.creators.items[0].name : ''
 
         titleResults.innerHTML = 'Personajes'
-        moreInfoSection.innerHTML = ` 
-         <div>
-            <img src="${info.thumbnail.path + "." + info.thumbnail.extension}" alt="cover">
-         </div>
+        moreInfoSection.innerHTML = `
+    < div >
+    <img src="${info.thumbnail.path + "/portrait_uncanny." + info.thumbnail.extension}" alt = "cover" >
+         </div >
 
-         <div class="info">
-            <h2 class="titulo">${info.title}</h2>
-            <h3>Publicado:</h3>
-            <p class="publication-date">${date ? date : ''}</p>
-            <h3>Guionista(s):</h3>
-            <p class="scriptwriter">${creators ? creators : ''}</p>
-            <h3>Descripcion:</h3>
-            <p class="description">${info.description ? info.description : ''}</p>
-         </div>`
+    <div class="info">
+        <h2 class="titulo">${info.title}</h2>
+        <h3>Publicado:</h3>
+        <p class="publication-date">${date ? date : ''}</p>
+        <h3>Guionista(s):</h3>
+        <p class="scriptwriter">${creators ? creators : ''}</p>
+        <h3>Descripcion:</h3>
+        <p class="description">${info.description ? info.description : ''}</p>
+    </div>`
 
     } else {
         titleResults.innerHTML = 'Comics'
-        moreInfoSection.innerHTML = ` 
-            <div>
-                <img src="${info.thumbnail.path + "." + info.thumbnail.extension}" alt="cover">
-            </div>
+        moreInfoSection.innerHTML = `
+        < div >
+        <img src="${info.thumbnail.path + "/portrait_uncanny." + info.thumbnail.extension}" alt = "cover" >
+            </div >
 
-            <div class="info">
-                <h2 class="name">${info.name}</h2>
-                <h3>Descripcion:</h3>
-                <p class="description">${info.description ? info.description : ''}</p>
-           </div>`
+    <div class="info">
+        <h2 class="name">${info.name}</h2>
+        <h3>Descripcion:</h3>
+        <p class="description">${info.description ? info.description : ''}</p>
+    </div>`
     }
 
 }
@@ -117,16 +118,16 @@ const createURL = (resource, orden, userSearch, id) => {
         return URLBASE + resource + "/" + id + "?" + APIKEY
     }
     else if (userSearch.trim() && resource === 'comics') {
-        return URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` +
-            `&orderBy=${orden}` + `&titleStartsWith=${userSearch}&` + APIKEY
+        return `${URLBASE}${resource}?offset=${currentPage * ITEM_PER_PAGE}
+        &orderBy=${orden}&titleStartsWith=${userSearch}&${APIKEY}`
 
     } else if (userSearch.trim() && resource === 'characters') {
-        return URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` +
-            `&orderBy=${orden}` + `&nameStartsWith=${userSearch}&` + APIKEY
+        return `${URLBASE}${resource}?offset=${currentPage * ITEM_PER_PAGE}
+            &orderBy=${orden}&nameStartsWith=${userSearch}&${APIKEY}`
 
     } else if (!userSearch.trim()) {
-        return URLBASE + resource + "?" + `offset=${currentPage * ITEM_PER_PAGE}` +
-            `&orderBy=${orden}&` + APIKEY
+        return `${URLBASE}${resource}?offset=${currentPage * ITEM_PER_PAGE}
+        &orderBy=${orden}&${APIKEY}`
     }
 
 }
@@ -178,12 +179,13 @@ const checkPaging = (nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 const calculateRemainingResults = () => {
     remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
 }
-
+debugger
 const getInfo = (url) => {
-
+    console.log('url', url)
     fetch(url).then((data) => {
         return data.json();
     }).then((elements) => {
+
         const listOfElements = elements.data.results
 
         containerCards.innerHTML = ''
@@ -204,6 +206,7 @@ getInfo(URLBASE + 'comics?offset=0&orderBy=title&' + APIKEY);
 const searchResults = (resource, orden, inputText) => {
 
     let url = createURL(resource.value, orden, inputText)
+    console.log(url)
     switch (resource.value) {
         case 'comics':
             getInfo(url)
