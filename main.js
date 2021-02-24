@@ -22,6 +22,7 @@ const form = document.querySelector('#form')
 const containerMoreInfo = document.querySelector('.container-more-info')
 const moreInfoSection = document.querySelector('.more-info')
 const btnBack = document.querySelector('.btn-back')
+const titleResults = document.querySelector('.title-result')
 
 const createCard = (covers, HTML) => {
 
@@ -77,6 +78,7 @@ const createCardMoreInfo = (info, resource) => {
         const date = new Intl.DateTimeFormat('es-DO').format(info.dates[0].date.type)
         const creators = info.creators.returned > 0 ? info.creators.items[0].name : ''
 
+        titleResults.innerHTML = 'Personajes'
         moreInfoSection.innerHTML = ` 
          <div>
             <img src="${info.thumbnail.path + "." + info.thumbnail.extension}" alt="cover">
@@ -84,7 +86,7 @@ const createCardMoreInfo = (info, resource) => {
 
          <div class="info">
             <h2 class="titulo">${info.title}</h2>
-            <h3>publicado:</h3>
+            <h3>Publicado:</h3>
             <p class="publication-date">${date ? date : ''}</p>
             <h3>Guionista(s):</h3>
             <p class="scriptwriter">${creators ? creators : ''}</p>
@@ -93,7 +95,7 @@ const createCardMoreInfo = (info, resource) => {
          </div>`
 
     } else {
-
+        titleResults.innerHTML = 'Comics'
         moreInfoSection.innerHTML = ` 
             <div>
                 <img src="${info.thumbnail.path + "." + info.thumbnail.extension}" alt="cover">
@@ -210,6 +212,7 @@ const searchResults = (resource, orden, inputText) => {
             getInfo(url)
             break;
     }
+    titleResults.innerHTML = 'Resultados'
 }
 
 const changeOptionsSelectBox = (resource, selectBox) => {
