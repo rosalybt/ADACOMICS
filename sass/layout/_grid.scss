@@ -7,6 +7,24 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
+  .container-more-info {
+    padding-top: 50px;
+    button {
+      @include button($color-secundario, $color-principal, 125px, 35px);
+      &:hover {
+        background-color: $color-terceario;
+      }
+    }
+
+    .more-info {
+      padding-top: 10px;
+
+      .info {
+        margin-left: 50px;
+      }
+    }
+  }
 }
 
 .pages {
