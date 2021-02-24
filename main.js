@@ -25,12 +25,12 @@ const btnBack = document.querySelector('.btn-back')
 const titleResults = document.querySelector('.title-result')
 
 const createCard = (covers, HTML) => {
-
+    const resource = typeOfResource.value
     covers.forEach((info) => {
 
         const header = info.title ? 'title' : 'name'
         HTML.innerHTML += `
-        <article class="card" data-id= ${info.id} data-resource = "${typeOfResource.value}">
+        <article class="${resource}-card" data-id= ${info.id}>
             <div class="imagen">
                 <img src="${info.thumbnail.path + "/portrait_uncanny." + info.thumbnail.extension}" alt="">
             </div >

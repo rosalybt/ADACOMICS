@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
-.card .info, footer, .pages {
+.comics-card .info, footer, .pages {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -183,14 +183,14 @@ footer a:visited, footer a:link, footer a:active {
   cursor: text;
 }
 
-.card {
+.comics-card {
   width: 230px;
   margin-bottom: 30px;
 }
-.card h3 {
+.comics-card h3 {
   margin: 0;
 }
-.card .imagen {
+.comics-card .imagen {
   width: 100%;
   height: 350px;
   position: relative;
@@ -198,28 +198,22 @@ footer a:visited, footer a:link, footer a:active {
   transform: translateY(0);
   transition: 0.5s ease;
 }
-.card .imagen img {
+.comics-card .imagen img {
   width: 100%;
   height: 100%;
   position: relative;
   right: 0;
   top: 0;
 }
-.card .info {
+.comics-card .info {
   padding-top: 25px;
 }
-.card:hover .imagen {
+.comics-card:hover .imagen {
   transform: translateY(-20px);
   transition: 0.5s ease;
 }
-.card:hover .info {
+.comics-card:hover .info {
   color: #e50000;
-}
-
-.comic-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .card-more-info {
@@ -229,6 +223,48 @@ footer a:visited, footer a:link, footer a:active {
 .card-more-info img {
   width: 324px;
   height: 500px;
+}
+
+.characters-card {
+  background-color: #e50000;
+  width: 230px;
+  margin-bottom: 30px;
+}
+.characters-card h3 {
+  margin: 0;
+}
+.characters-card .imagen {
+  width: 100%;
+  height: 324px;
+  position: relative;
+  overflow: hidden;
+}
+.characters-card .imagen img {
+  width: 300px;
+  height: 450px;
+  position: relative;
+  left: 0;
+  top: 0;
+  transform: scale(1);
+  transition: 0.2s ease;
+}
+.characters-card .info {
+  position: relative;
+  top: 4px;
+  height: 25%;
+  padding-bottom: 25px;
+  color: white;
+  background-color: black;
+}
+.characters-card .info h3 {
+  padding: 20px;
+}
+.characters-card:hover img {
+  transform: scale(1.2);
+  transition: 0.2s ease;
+}
+.characters-card:hover .info {
+  background-color: #e50000;
 }
 
 .filtro-texto {

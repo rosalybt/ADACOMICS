@@ -1,4 +1,4 @@
-.card {
+.comics-card {
   width: 230px;
   margin-bottom: 30px;
   // position: relative;
@@ -37,19 +37,63 @@
   }
 }
 
-.comic-card {
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
 .card-more-info {
   display: flex;
   flex-direction: row;
   img {
     width: 324px;
     height: 500px;
+  }
+}
+
+.characters-card {
+  background-color: $color-terceario;
+  width: 230px;
+  margin-bottom: 30px;
+  // position: relative;
+  h3 {
+    margin: 0;
+  }
+  .imagen {
+    width: 100%;
+    height: 324px;
+    position: relative;
+    overflow: hidden;
+    img {
+      // object-fit: scale-down;
+      width: 300px;
+      height: 450px;
+      position: relative;
+      left: 0;
+      top: 0;
+      transform: scale(1);
+      transition: 0.2s ease;
+    }
+  }
+  .info {
+    position: relative;
+    top: 4px;
+    height: 25%;
+    padding-bottom: 25px;
+    color: $color-principal;
+    background-color: $color-secundario;
+    h3 {
+      padding: 20px;
+    }
+  }
+
+  &:hover {
+    // .imagen {
+    //   transform: translateY(-20px);
+    //   transition: 0.5s ease;
+    // }
+    img {
+      transform: scale(1.2);
+      transition: 0.2s ease;
+    }
+
+    .info {
+      background-color: $color-terceario;
+    }
   }
 }
