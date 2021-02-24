@@ -191,4 +191,8 @@ footer a:visited, footer a:link, footer a:active {
   font-family: "Roboto", cursive;
 }
 
+.hidden {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
