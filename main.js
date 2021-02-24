@@ -8,6 +8,8 @@ let currentPage = 0
 let currentOrder = 'title'
 let totalResultsDisplayed = 0
 let remainingResults = 0
+let secondarySearch = ''
+let cardClicked = false
 
 const nextPage = document.querySelector('#btn-next')
 const previousPage = document.querySelector('#btn-previous')
@@ -24,20 +26,24 @@ const moreInfoSection = document.querySelector('.more-info')
 const btnBack = document.querySelector('.btn-back')
 const titleResults = document.querySelector('.title-result')
 
-const createCard = (covers, HTML) => {
-    const resource = typeOfResource.value
-    covers.forEach((info) => {
 
+
+const createCard = (covers, HTML) => {
+    // if click on a card, the class is assigned to the corresponding resource
+    const resource = cardClicked ? secondarySearch : typeOfResource.value
+
+    covers.forEach((info) => {
         const header = info.title ? 'title' : 'name'
+
         HTML.innerHTML += `
-        <article class="${resource}-card" data-id= ${info.id}>
-            <div class="imagen">
-                <img src="${info.thumbnail.path + "/portrait_uncanny." + info.thumbnail.extension}" alt="">
-            </div >
-    <div class="info">
-        <h3 class="nombre">${info[header]}</h3>
-    </div>
-        </article >
+            <article class="${resource}-card card" data-id=${info.id} data-resource=${resource}>
+                <div class="imagen">
+                    <img src=${info.thumbnail.path}/portrait_uncanny.${info.thumbnail.extension} alt="cover">
+                </div>
+                <div class="info">
+                    <h3 class="nombre">${info[header]}</h3>
+                </div>
+            </article>
     `
     });
     addOnClickEventToACard()
@@ -52,6 +58,7 @@ const addOnClickEventToACard = () => {
             let resource = card.dataset.resource
             let id = card.dataset.id
             showMoreInfoResource(resource, id)
+            cardClicked = true
         }
     })
 
@@ -78,12 +85,12 @@ const createCardMoreInfo = (info, resource) => {
     if (resource === 'comics') {
         const date = new Intl.DateTimeFormat('es-DO').format(info.dates[0].date.type)
         const creators = info.creators.returned > 0 ? info.creators.items[0].name : ''
-
+        secondarySearch = 'characters'
         titleResults.innerHTML = 'Personajes'
         moreInfoSection.innerHTML = `
-    < div >
-    <img src="${info.thumbnail.path + "/portrait_uncanny." + info.thumbnail.extension}" alt = "cover" >
-         </div >
+    <div>
+        <img src=${info.thumbnail.path}/portrait_uncanny.${info.thumbnail.extension} alt = "cover" >
+    </div>
 
     <div class="info">
         <h2 class="titulo">${info.title}</h2>
@@ -96,17 +103,18 @@ const createCardMoreInfo = (info, resource) => {
     </div>`
 
     } else {
+        secondarySearch = 'comics'
         titleResults.innerHTML = 'Comics'
         moreInfoSection.innerHTML = `
-        < div >
-        <img src="${info.thumbnail.path + "/portrait_uncanny." + info.thumbnail.extension}" alt = "cover" >
-            </div >
+        <div>
+            <img src=${info.thumbnail.path}/portrait_uncanny.${info.thumbnail.extension} alt = "cover" >
+        </div>
 
-    <div class="info">
-        <h2 class="name">${info.name}</h2>
-        <h3>Descripcion:</h3>
-        <p class="description">${info.description ? info.description : ''}</p>
-    </div>`
+        <div class="info">
+            <h2 class="name">${info.name}</h2>
+            <h3>Descripcion:</h3>
+            <p class="description">${info.description ? info.description : ''}</p>
+        </div>`
     }
 
 }
@@ -270,6 +278,7 @@ form.onsubmit = (e) => {
 }
 
 btnBack.onclick = () => {
+    cardClicked = false
     searchResults(typeOfResource, currentOrder, inputText.value)
     hide(containerMoreInfo)
 }
