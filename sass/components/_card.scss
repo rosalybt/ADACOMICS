@@ -1,7 +1,6 @@
 .comics-card {
   width: 230px;
   margin-bottom: 30px;
-  // position: relative;
   h3 {
     margin: 0;
   }
@@ -48,9 +47,8 @@
 
 .characters-card {
   background-color: $color-terceario;
-  width: 230px;
+  width: 220px;
   margin-bottom: 30px;
-  // position: relative;
   h3 {
     margin: 0;
   }
@@ -60,7 +58,6 @@
     position: relative;
     overflow: hidden;
     img {
-      // object-fit: scale-down;
       width: 300px;
       height: 450px;
       position: relative;
@@ -83,10 +80,6 @@
   }
 
   &:hover {
-    // .imagen {
-    //   transform: translateY(-20px);
-    //   transition: 0.5s ease;
-    // }
     img {
       transform: scale(1.2);
       transition: 0.2s ease;

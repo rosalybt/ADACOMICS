@@ -27,7 +27,6 @@ const btnBack = document.querySelector('.btn-back')
 const titleResults = document.querySelector('.title-result')
 
 
-
 const createCard = (covers, HTML) => {
     // if click on a card, the class is assigned to the corresponding resource
     const resource = cardClicked ? secondarySearch : typeOfResource.value
@@ -61,7 +60,6 @@ const addOnClickEventToACard = () => {
             cardClicked = true
         }
     })
-
 }
 
 const getInfoUniqueResource = (resource, id) => {
@@ -85,6 +83,7 @@ const createCardMoreInfo = (info, resource) => {
     if (resource === 'comics') {
         const date = new Intl.DateTimeFormat('es-DO').format(info.dates[0].date.type)
         const creators = info.creators.returned > 0 ? info.creators.items[0].name : ''
+
         secondarySearch = 'characters'
         titleResults.innerHTML = 'Personajes'
         moreInfoSection.innerHTML = `
@@ -137,9 +136,7 @@ const createURL = (resource, orden, userSearch, id) => {
         return `${URLBASE}${resource}?offset=${currentPage * ITEM_PER_PAGE}
         &orderBy=${orden}&${APIKEY}`
     }
-
 }
-
 
 const disable = (element) => {
     element.disabled = true
@@ -187,13 +184,12 @@ const checkPaging = (nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 const calculateRemainingResults = () => {
     remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
 }
-debugger
+
 const getInfo = (url) => {
-    console.log('url', url)
+
     fetch(url).then((data) => {
         return data.json();
     }).then((elements) => {
-
         const listOfElements = elements.data.results
 
         containerCards.innerHTML = ''
@@ -203,18 +199,14 @@ const getInfo = (url) => {
 
         if (listOfElements.length) createCard(listOfElements, containerCards);
         else containerCards.innerHTML = '<h3>No se han encontrado resultados</h3>';
-
-
     })
-
 };
 
 getInfo(URLBASE + 'comics?offset=0&orderBy=title&' + APIKEY);
 
 const searchResults = (resource, orden, inputText) => {
-
     let url = createURL(resource.value, orden, inputText)
-    console.log(url)
+
     switch (resource.value) {
         case 'comics':
             getInfo(url)
@@ -274,6 +266,8 @@ selectBoxOrder.onchange = () => currentOrder = selectBoxOrder.value
 form.onsubmit = (e) => {
     e.preventDefault()
     remainingResults = 0
+    secondarySearch = typeOfResource.value
+    hide(containerMoreInfo)
     searchResults(typeOfResource, currentOrder, inputText.value)
 }
 
