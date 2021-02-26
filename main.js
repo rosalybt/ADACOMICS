@@ -280,6 +280,22 @@ btnBack.onclick = () => {
 const btnModoOscuro = document.querySelector('.modo-oscuro')
 
 btnModoOscuro.onclick = () => {
-    document.body.classList.toggle('dark')
+    const body = document.body
+
+    body.classList.toggle('dark')
     btnModoOscuro.classList.toggle('active')
+
+    if (body.classList.contains('dark')) {
+        localStorage.setItem('modo-oscuro', 'true')
+    } else {
+        localStorage.setItem('modo-oscuro', 'false')
+    }
+
+    if (localStorage.getItem('modo-oscuro') === 'true') {
+        body.classList.add('dark');
+        btnModoOscuro.classList.add('active');
+    } else {
+        body.classList.remove('dark');
+        btnModoOscuro.classList.remove('active');
+    }
 }
