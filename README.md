@@ -9,7 +9,7 @@ permitiéndole al usuario hacer un filtro de la búsqueda que desee, dicho proye
 - API utilizada [MARVEL](https://rosalybt.github.io/Portafolio/index.html)
 
 ## DEMO 👀
-Si deseas ver el demo de este proyecto, [¡Échale un vistazo!⚡](https://rosalybt.github.io/Portafolio/index.html)
+Si deseas ver el demo de este proyecto, [¡Échale un vistazo!⚡](https://rosalybt.github.io/ADACOMICS/)
 ##
 hecho con ❤️ por [Rosaly](https://www.linkedin.com/in/rosaly-balbuena-b287241b4/)
 
