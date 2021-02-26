@@ -1,0 +1,49 @@
+.modo-oscuro {
+  background-color: orange;
+  border-radius: 1000px;
+  border: none;
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  font-size: large;
+  outline: none;
+  height: 30px;
+  width: 70px;
+  top: 15px;
+  right: 50px;
+  &::after {
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 30px;
+
+    background-color: $color-principal;
+    top: 0;
+    transform: translateX(35px);
+    transition: 0.5s ease;
+    border-radius: 100px;
+    box-shadow: 0 0 2px 2px rgba($color: #000000, $alpha: 0.2);
+  }
+
+  &.active {
+    background-color: #343d58;
+    color: $color-secundario;
+
+    &::after {
+      transition: 2s;
+      top: 0;
+      transform: translateX(-5px);
+      transition: 0.5s ease;
+    }
+  }
+
+  span {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    background: none;
+    justify-content: space-around;
+    align-items: center;
+    color: $color-principal;
+  }
+}

@@ -276,3 +276,10 @@ btnBack.onclick = () => {
     searchResults(typeOfResource, currentOrder, inputText.value)
     hide(containerMoreInfo)
 }
+
+const btnModoOscuro = document.querySelector('.modo-oscuro')
+
+btnModoOscuro.onclick = () => {
+    document.body.classList.toggle('dark')
+    btnModoOscuro.classList.toggle('active')
+}

@@ -9,3 +9,39 @@
 .hidden {
   display: none;
 }
+
+body {
+  &.dark {
+    main {
+      form {
+        .fas.fa-search {
+          color: $color-secundario;
+        }
+        select {
+          background-color: $color-sombra;
+        }
+      }
+
+      .busqueda {
+        color: $color-principal;
+      }
+      #input-texto {
+        border-bottom: 1px solid $color-deshabilitado;
+        background-color: $color-sombra;
+        color: $color-terceario;
+      }
+
+      button {
+        background-color: $color-terceario;
+      }
+      .show-results {
+        color: $color-principal;
+      }
+      background-color: $color-modo-oscuro;
+      color: $color-principal;
+      .comics-card {
+        color: $color-principal;
+      }
+    }
+  }
+}
