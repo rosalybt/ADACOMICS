@@ -25,6 +25,7 @@ const containerMoreInfo = document.querySelector('.container-more-info')
 const moreInfoSection = document.querySelector('.more-info')
 const btnBack = document.querySelector('.btn-back')
 const titleResults = document.querySelector('.title-result')
+const btnDarkMode = document.querySelector('.modo-oscuro')
 
 
 const createCard = (covers, HTML) => {
@@ -235,6 +236,26 @@ const changeOptionsSelectBox = (resource, selectBox) => {
 
 }
 
+
+const saveDarkMode = () => {
+    const body = document.body
+    body.classList.toggle('dark')
+    btnDarkMode.classList.toggle('active')
+
+    body.classList.contains('dark') ? localStorage.setItem('modo-oscuro', 'true') : localStorage.setItem('modo-oscuro', 'false')
+}
+
+const checkDarkMode = () => {
+
+    if (localStorage.getItem('modo-oscuro') === 'true') {
+        document.body.classList.add('dark');
+        btnDarkMode.classList.add('active');
+    } else {
+        document.body.classList.remove('dark');
+        btnDarkMode.classList.remove('active');
+    }
+}
+
 typeOfResource.onchange = () => {
     currentPage = 0
     changeOptionsSelectBox(typeOfResource, selectBoxOrder)
@@ -277,25 +298,6 @@ btnBack.onclick = () => {
     hide(containerMoreInfo)
 }
 
-const btnModoOscuro = document.querySelector('.modo-oscuro')
+checkDarkMode()
+btnDarkMode.onclick = () => saveDarkMode()
 
-btnModoOscuro.onclick = () => {
-    const body = document.body
-
-    body.classList.toggle('dark')
-    btnModoOscuro.classList.toggle('active')
-
-    if (body.classList.contains('dark')) {
-        localStorage.setItem('modo-oscuro', 'true')
-    } else {
-        localStorage.setItem('modo-oscuro', 'false')
-    }
-
-    if (localStorage.getItem('modo-oscuro') === 'true') {
-        body.classList.add('dark');
-        btnModoOscuro.classList.add('active');
-    } else {
-        body.classList.remove('dark');
-        btnModoOscuro.classList.remove('active');
-    }
-}
