@@ -1,5 +1,5 @@
 .select {
-  @include texto(_, $tamanio-medio, bold);
+  @include texto(_, $tamanio-medio, $bold);
   border: none;
   margin-left: 5px;
   font-weight: $bold;

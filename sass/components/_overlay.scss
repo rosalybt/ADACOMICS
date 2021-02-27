@@ -7,24 +7,20 @@
   left: 0;
   top: 0;
   bottom: 0;
-  z-index: 5;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .circle-animation {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-
   &::after {
     content: "";
     display: block;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    border: 10px solid $color-rojo;
+    border: 5px solid $color-rojo;
     border-color: $color-rojo transparent $color-rojo transparent;
     animation: circle-animation 1.2s linear infinite;
     @keyframes circle-animation {

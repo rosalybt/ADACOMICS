@@ -399,7 +399,7 @@ footer a:visited, footer a:link, footer a:active {
 
 .select {
   color: _;
-  font-weight: bold;
+  font-weight: 500;
   font-size: large;
   border: none;
   margin-left: 5px;
@@ -475,24 +475,19 @@ footer a:visited, footer a:link, footer a:active {
   left: 0;
   top: 0;
   bottom: 0;
-  z-index: 5;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.circle-animation {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-}
 .circle-animation::after {
   content: "";
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  border: 10px solid #e50000;
+  border: 5px solid #e50000;
   border-color: #e50000 transparent #e50000 transparent;
   animation: circle-animation 1.2s linear infinite;
 }
