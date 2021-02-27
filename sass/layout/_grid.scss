@@ -9,12 +9,11 @@ main {
 
     @media screen and (max-width: 425px) {
       width: 100%;
-      // padding: 0 30px;
       display: flex;
       justify-content: center;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (min-width: 768px) {
       padding: 0 50px;
     }
   }
@@ -40,14 +39,8 @@ main {
     }
   }
 
-  // @media screen and (max-width: 320px) {
-  //   padding: 0;
-  // }
-
   @media screen and (max-width: 425px) {
     padding: 20px 30px;
-    // padding-bottom: 20px;
-    // padding-top: 20px;
   }
 
   @media screen and (min-width: 1024px) {

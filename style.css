@@ -185,7 +185,7 @@ main .contenedor-cards {
     justify-content: center;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   main .contenedor-cards {
     padding: 0 50px;
   }

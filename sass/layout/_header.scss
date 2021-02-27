@@ -2,7 +2,6 @@
   background-color: $color-secundario;
   display: flex;
   justify-content: center;
-  // position: relative;
   .contenedor-marca {
     background-color: $color-terceario;
 
@@ -17,10 +16,6 @@
         text-align: center;
       }
     }
-
-    // @media screen and (max-width: 375px) {
-    //   width: 100%;
-    // }
   }
 }
 
