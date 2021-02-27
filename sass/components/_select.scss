@@ -1,5 +1,6 @@
 .select {
-  @include texto(_, large, bold);
+  @include texto(_, $tamanio-medio, bold);
   border: none;
   margin-left: 5px;
+  font-weight: $bold;
 }

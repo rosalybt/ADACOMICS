@@ -1,9 +1,8 @@
 .barra {
-  background-color: $color-secundario;
-  display: flex;
-  justify-content: center;
+  background-color: $color-negro;
+  @extend %centrar;
   .contenedor-marca {
-    background-color: $color-terceario;
+    background-color: $color-rojo;
 
     .nombre-marca {
       font-family: $tipografia-marca;
@@ -11,10 +10,7 @@
       line-height: 0;
       font-size: 2.5rem;
       padding: 5px;
-      color: $color-principal;
-      @media screen and (max-width: 375px) {
-        text-align: center;
-      }
+      color: $color-blanco;
     }
   }
 }
@@ -27,8 +23,8 @@
 
   &::before {
     content: "";
-    display: block;
-    background-color: rgba(0, 0, 0, 0.5);
+    // display: block;
+    background-color: rgba($color-negro, 0.5);
     height: 100%;
     width: 100%;
     position: absolute;

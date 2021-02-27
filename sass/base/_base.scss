@@ -11,41 +11,48 @@
 }
 
 body {
-  background-color: $color-modo-oscuro;
+  background-color: $color-blanco;
   overflow-x: hidden;
   &.dark {
+    body {
+      background-color: $color-modo-oscuro;
+    }
+
     .barra {
-      background-color: $color-terceario;
+      background-color: $color-rojo;
     }
     main {
       form {
         .fas.fa-search {
-          color: $color-secundario;
+          color: $color-blanco;
         }
         select {
-          background-color: $color-sombra;
+          background-color: $color-modo-oscuro;
+          color: $color-blanco;
         }
       }
 
       .busqueda {
-        color: $color-principal;
+        color: $color-blanco;
       }
       #input-texto {
         border-bottom: 1px solid $color-deshabilitado;
-        background-color: $color-sombra;
-        color: $color-terceario;
+        background-color: $color-modo-oscuro;
+        color: $color-blanco;
       }
 
       button {
-        background-color: $color-terceario;
+        background-color: $color-rojo;
       }
+
       .show-results {
-        color: $color-principal;
+        color: $color-blanco;
       }
       background-color: $color-modo-oscuro;
-      color: $color-principal;
+      color: $color-blanco;
+
       .comics-card {
-        color: $color-principal;
+        color: $color-blanco;
       }
     }
   }

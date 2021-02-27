@@ -3,12 +3,13 @@
   margin-bottom: 30px;
   h3 {
     margin: 0;
+    font-weight: $no-bold;
   }
   .imagen {
     width: 100%;
     height: 350px;
     position: relative;
-    box-shadow: 0 26px 24px -16px ($color-sombra);
+    box-shadow: 0 26px 24px -16px ($color-gris);
     img {
       width: 100%;
       height: 100%;
@@ -35,7 +36,7 @@
     }
 
     .info {
-      color: $color-terceario;
+      color: $color-rojo;
     }
   }
 
@@ -64,11 +65,12 @@
 }
 
 .characters-card {
-  background-color: $color-terceario;
+  background-color: $color-rojo;
   width: 220px;
   margin-bottom: 30px;
   h3 {
     margin: 0;
+    font-weight: $no-bold;
   }
   .imagen {
     width: 100%;
@@ -90,8 +92,8 @@
     top: 4px;
     height: 25%;
     padding-bottom: 25px;
-    color: $color-principal;
-    background-color: $color-secundario;
+    color: $color-blanco;
+    background-color: $color-negro;
     h3 {
       padding: 20px;
     }
@@ -104,7 +106,7 @@
     }
 
     .info {
-      background-color: $color-terceario;
+      background-color: $color-rojo;
     }
   }
 }

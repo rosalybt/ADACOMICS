@@ -28,7 +28,7 @@ form {
     align-items: flex-end;
     @include texto($color-deshabilitado, normal, bold);
     button {
-      @include button($color-secundario, $color-principal, 100px, 35px);
+      @include button($color-negro, $color-blanco, 100px, 35px);
     }
 
     @media screen and (max-width: 425px) {
@@ -36,10 +36,10 @@ form {
     }
     @media screen and (max-width: 768px) {
       flex-direction: column;
-      justify-content: space-between;
-      align-content: space-between;
+      // justify-content: space-between;
+      // align-content: space-between;
       height: 100px;
-      width: 50%;
+      // width: 50%;
       margin-top: 10px;
     }
   }
@@ -55,8 +55,8 @@ form {
 
 .show-results {
   margin-top: 4rem;
-  @include texto($color-secundario, 20px, bold);
+  @include texto($color-negro, 20px, bold);
   span {
-    @include texto($color-deshabilitado, small, bold);
+    @include texto($color-deshabilitado, $tamanio-pequenio, bold);
   }
 }

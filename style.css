@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
-.comics-card .info, footer, .pages {
+.comics-card .info, footer, .pages, .barra {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -9,7 +9,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Roboto", cursive;
+  font-family: "Roboto", sans-serif;
 }
 
 .hidden {
@@ -17,8 +17,11 @@
 }
 
 body {
-  background-color: #121214;
+  background-color: white;
   overflow-x: hidden;
+}
+body.dark body {
+  background-color: #121214;
 }
 body.dark .barra {
   background-color: #e50000;
@@ -28,18 +31,19 @@ body.dark main {
   color: white;
 }
 body.dark main form .fas.fa-search {
-  color: black;
+  color: white;
 }
 body.dark main form select {
-  background-color: #686868;
+  background-color: #121214;
+  color: white;
 }
 body.dark main .busqueda {
   color: white;
 }
 body.dark main #input-texto {
   border-bottom: 1px solid #808080;
-  background-color: #686868;
-  color: #e50000;
+  background-color: #121214;
+  color: white;
 }
 body.dark main button {
   background-color: #e50000;
@@ -53,8 +57,6 @@ body.dark main .comics-card {
 
 .barra {
   background-color: black;
-  display: flex;
-  justify-content: center;
 }
 .barra .contenedor-marca {
   background-color: #e50000;
@@ -67,11 +69,6 @@ body.dark main .comics-card {
   padding: 5px;
   color: white;
 }
-@media screen and (max-width: 375px) {
-  .barra .contenedor-marca .nombre-marca {
-    text-align: center;
-  }
-}
 
 .portada {
   position: relative;
@@ -81,7 +78,6 @@ body.dark main .comics-card {
 }
 .portada::before {
   content: "";
-  display: block;
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
@@ -141,10 +137,7 @@ form .filtros button {
 @media screen and (max-width: 768px) {
   form .filtros {
     flex-direction: column;
-    justify-content: space-between;
-    align-content: space-between;
     height: 100px;
-    width: 50%;
     margin-top: 10px;
   }
 }
@@ -287,6 +280,7 @@ footer a:visited, footer a:link, footer a:active {
 }
 .comics-card h3 {
   margin: 0;
+  font-weight: 100;
 }
 .comics-card .imagen {
   width: 100%;
@@ -354,6 +348,7 @@ footer a:visited, footer a:link, footer a:active {
 }
 .characters-card h3 {
   margin: 0;
+  font-weight: 100;
 }
 .characters-card .imagen {
   width: 100%;
@@ -398,7 +393,7 @@ footer a:visited, footer a:link, footer a:active {
   border: none;
   border-bottom: 1px solid black;
   margin-top: 15px;
-  padding: 5px 30px 5px 30px;
+  padding: 5px 30px;
   font-size: x-large;
 }
 
@@ -408,10 +403,11 @@ footer a:visited, footer a:link, footer a:active {
   font-size: large;
   border: none;
   margin-left: 5px;
+  font-weight: 500;
 }
 
 .modo-oscuro {
-  background-color: orange;
+  background-color: #ffa500;
   border-radius: 1000px;
   border: none;
   position: absolute;
