@@ -19,6 +19,9 @@
 body {
   overflow-x: hidden;
 }
+body.dark .barra {
+  background-color: #e50000;
+}
 body.dark main {
   background-color: #121214;
   color: white;
@@ -62,6 +65,11 @@ body.dark main .comics-card {
   font-size: 2.5rem;
   padding: 5px;
   color: white;
+}
+@media screen and (max-width: 375px) {
+  .barra .contenedor-marca .nombre-marca {
+    text-align: center;
+  }
 }
 
 .portada {
@@ -124,7 +132,7 @@ form .filtros button {
   font-weight: lighter;
   font-size: large;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
   form .filtros {
     flex-direction: column;
     justify-content: space-between;
@@ -137,7 +145,7 @@ form .filtros button {
 form h2 {
   margin: 0;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
   form {
     flex-direction: column;
   }
@@ -197,9 +205,13 @@ main .container-more-info .more-info .info {
   margin-left: 50px;
 }
 @media screen and (max-width: 425px) {
+  main .container-more-info .more-info .info {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 425px) {
   main {
-    padding: 0 30px;
-    padding-bottom: 20px;
+    padding: 20px 30px;
   }
 }
 
@@ -304,6 +316,11 @@ footer a:visited, footer a:link, footer a:active {
 .card-more-info img {
   width: 324px;
   height: 500px;
+}
+@media screen and (max-width: 768px) {
+  .card-more-info {
+    flex-direction: column;
+  }
 }
 
 .characters-card {
@@ -413,6 +430,13 @@ footer a:visited, footer a:link, footer a:active {
   justify-content: space-around;
   align-items: center;
   color: white;
+}
+@media screen and (max-width: 425px) {
+  .modo-oscuro {
+    position: absolute;
+    right: 2.5rem;
+    top: 27rem;
+  }
 }
 
 .overlay-loading {

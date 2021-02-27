@@ -53,6 +53,10 @@
     width: 324px;
     height: 500px;
   }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .characters-card {

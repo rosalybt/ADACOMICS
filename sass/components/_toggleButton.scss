@@ -46,4 +46,10 @@
     align-items: center;
     color: $color-principal;
   }
+
+  @media screen and (max-width: 425px) {
+    position: absolute;
+    right: 2.5rem;
+    top: 27rem;
+  }
 }

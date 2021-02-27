@@ -33,6 +33,9 @@ main {
 
       .info {
         margin-left: 50px;
+        @media screen and (max-width: 425px) {
+          margin-left: 0;
+        }
       }
     }
   }
@@ -42,8 +45,9 @@ main {
   // }
 
   @media screen and (max-width: 425px) {
-    padding: 0 30px;
-    padding-bottom: 20px;
+    padding: 20px 30px;
+    // padding-bottom: 20px;
+    // padding-top: 20px;
   }
 }
 
