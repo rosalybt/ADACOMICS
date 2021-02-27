@@ -7,10 +7,11 @@
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 body {
+  overflow-x: hidden;
   &.dark {
     main {
       form {

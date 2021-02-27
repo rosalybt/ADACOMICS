@@ -13,9 +13,12 @@
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
+body {
+  overflow-x: hidden;
+}
 body.dark main {
   background-color: #121214;
   color: white;
@@ -166,6 +169,9 @@ main .container-more-info .more-info {
 }
 main .container-more-info .more-info .info {
   margin-left: 50px;
+}
+main .allResult {
+  position: relative;
 }
 
 .pages {
@@ -361,6 +367,45 @@ footer a:visited, footer a:link, footer a:active {
   justify-content: space-around;
   align-items: center;
   color: white;
+}
+
+.overlay-loading {
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-animation {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.circle-animation::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 10px solid #e50000;
+  border-color: #e50000 transparent #e50000 transparent;
+  animation: circle-animation 1.2s linear infinite;
+}
+@keyframes circle-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
