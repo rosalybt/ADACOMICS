@@ -52,10 +52,15 @@
   img {
     width: 324px;
     height: 500px;
+    @media screen and (max-width: 320px) {
+      width: 90vw;
+      height: auto;
+    }
   }
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    align-items: center;
   }
 }
 
