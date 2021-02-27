@@ -26,6 +26,7 @@ const moreInfoSection = document.querySelector('.more-info')
 const btnBack = document.querySelector('.btn-back')
 const titleResults = document.querySelector('.title-result')
 const btnDarkMode = document.querySelector('.modo-oscuro')
+const overlay = document.querySelector('.overlay-loading')
 
 
 const createCard = (covers, HTML) => {
@@ -200,12 +201,15 @@ const getInfo = (url) => {
 
         if (listOfElements.length) createCard(listOfElements, containerCards);
         else containerCards.innerHTML = '<h3>No se han encontrado resultados</h3>';
+        hide(overlay)
     })
 };
 
 getInfo(URLBASE + 'comics?offset=0&orderBy=title&' + APIKEY);
 
 const searchResults = (resource, orden, inputText) => {
+    show(overlay)
+
     let url = createURL(resource.value, orden, inputText)
 
     switch (resource.value) {
@@ -288,6 +292,7 @@ form.onsubmit = (e) => {
     e.preventDefault()
     remainingResults = 0
     secondarySearch = typeOfResource.value
+
     hide(containerMoreInfo)
     searchResults(typeOfResource, currentOrder, inputText.value)
 }
