@@ -17,6 +17,7 @@
 }
 
 body {
+  background-color: #121214;
   overflow-x: hidden;
 }
 body.dark .barra {
@@ -105,7 +106,7 @@ form .busqueda .fas.fa-search {
   top: 50px;
   left: 0;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
   form .busqueda {
     width: 100%;
   }
@@ -132,20 +133,25 @@ form .filtros button {
   font-weight: lighter;
   font-size: large;
 }
+@media screen and (max-width: 425px) {
+  form .filtros {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 768px) {
   form .filtros {
     flex-direction: column;
     justify-content: space-between;
     align-content: space-between;
     height: 100px;
-    width: 100%;
+    width: 50%;
     margin-top: 10px;
   }
 }
 form h2 {
   margin: 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 425px) {
   form {
     flex-direction: column;
   }
@@ -177,6 +183,11 @@ main .contenedor-cards {
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  main .contenedor-cards {
+    padding: 0 50px;
   }
 }
 main .container-more-info {
@@ -212,6 +223,12 @@ main .container-more-info .more-info .info {
 @media screen and (max-width: 425px) {
   main {
     padding: 20px 30px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main {
+    max-width: 1440px;
+    margin: 0 auto;
   }
 }
 
@@ -443,6 +460,13 @@ footer a:visited, footer a:link, footer a:active {
     position: absolute;
     right: 2.5rem;
     top: 27rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .modo-oscuro {
+    position: absolute;
+    right: 3rem;
+    top: 1.5rem;
   }
 }
 

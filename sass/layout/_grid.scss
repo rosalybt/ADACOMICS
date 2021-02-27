@@ -14,9 +14,9 @@ main {
       justify-content: center;
     }
 
-    // @media screen and (max-width: 768px) {
-    //   padding: 0 50px;
-    // }
+    @media screen and (max-width: 768px) {
+      padding: 0 50px;
+    }
   }
 
   .container-more-info {
@@ -48,6 +48,11 @@ main {
     padding: 20px 30px;
     // padding-bottom: 20px;
     // padding-top: 20px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1440px;
+    margin: 0 auto;
   }
 }
 

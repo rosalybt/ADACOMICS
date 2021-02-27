@@ -52,4 +52,10 @@
     right: 2.5rem;
     top: 27rem;
   }
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    right: 3rem;
+    top: 1.5rem;
+  }
 }

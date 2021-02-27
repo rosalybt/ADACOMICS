@@ -12,6 +12,7 @@
 }
 
 body {
+  background-color: $color-modo-oscuro;
   overflow-x: hidden;
   &.dark {
     .barra {
