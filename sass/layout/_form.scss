@@ -15,6 +15,11 @@ form {
       top: 50px;
       left: 0;
     }
+
+    @media screen and (max-width: 425px) {
+      // display: flex;
+      width: 100%;
+    }
   }
 
   .filtros {
@@ -26,10 +31,25 @@ form {
     button {
       @include button($color-secundario, $color-principal, 100px, 35px);
     }
+
+    @media screen and (max-width: 425px) {
+      // display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: space-between;
+      height: 100px;
+      width: 100%;
+      margin-top: 10px;
+    }
   }
 
   h2 {
     margin: 0;
+  }
+
+  @media screen and (max-width: 425px) {
+    // display: flex;
+    flex-direction: column;
   }
 }
 

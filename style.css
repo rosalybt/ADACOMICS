@@ -97,6 +97,11 @@ form .busqueda .fas.fa-search {
   top: 50px;
   left: 0;
 }
+@media screen and (max-width: 425px) {
+  form .busqueda {
+    width: 100%;
+  }
+}
 form .filtros {
   width: 50%;
   display: flex;
@@ -119,8 +124,23 @@ form .filtros button {
   font-weight: lighter;
   font-size: large;
 }
+@media screen and (max-width: 425px) {
+  form .filtros {
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    height: 100px;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
 form h2 {
   margin: 0;
+}
+@media screen and (max-width: 425px) {
+  form {
+    flex-direction: column;
+  }
 }
 
 .show-results {
@@ -143,6 +163,13 @@ main .contenedor-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+@media screen and (max-width: 425px) {
+  main .contenedor-cards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 main .container-more-info {
   padding-top: 50px;
@@ -169,6 +196,12 @@ main .container-more-info .more-info {
 main .container-more-info .more-info .info {
   margin-left: 50px;
 }
+@media screen and (max-width: 425px) {
+  main {
+    padding: 0 30px;
+    padding-bottom: 20px;
+  }
+}
 
 .pages {
   margin: 3rem 0 3rem 0;
@@ -191,6 +224,11 @@ main .container-more-info .more-info .info {
 }
 .pages button:hover {
   background-color: #e50000;
+}
+@media screen and (max-width: 375px) {
+  .pages {
+    margin-bottom: 0;
+  }
 }
 
 footer {
@@ -234,10 +272,16 @@ footer a:visited, footer a:link, footer a:active {
   height: 100%;
   position: relative;
   right: 0;
-  top: 0;
+  top: 5px;
+}
+@media screen and (max-width: 425px) {
+  .comics-card .imagen {
+    height: 0%;
+  }
 }
 .comics-card .info {
-  padding-top: 25px;
+  padding-top: 15px;
+  margin-top: 15px;
 }
 .comics-card:hover .imagen {
   transform: translateY(-20px);
@@ -245,6 +289,12 @@ footer a:visited, footer a:link, footer a:active {
 }
 .comics-card:hover .info {
   color: #e50000;
+}
+@media screen and (max-width: 425px) {
+  .comics-card {
+    width: 100%;
+    height: 0%;
+  }
 }
 
 .card-more-info {

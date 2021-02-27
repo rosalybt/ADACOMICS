@@ -6,6 +6,17 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    @media screen and (max-width: 425px) {
+      width: 100%;
+      // padding: 0 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    // @media screen and (max-width: 768px) {
+    //   padding: 0 50px;
+    // }
   }
 
   .container-more-info {
@@ -25,6 +36,15 @@ main {
       }
     }
   }
+
+  // @media screen and (max-width: 320px) {
+  //   padding: 0;
+  // }
+
+  @media screen and (max-width: 425px) {
+    padding: 0 30px;
+    padding-bottom: 20px;
+  }
 }
 
 .pages {
@@ -36,5 +56,9 @@ main {
     &:hover {
       background-color: $color-terceario;
     }
+  }
+
+  @media screen and (max-width: 375px) {
+    margin-bottom: 0;
   }
 }
