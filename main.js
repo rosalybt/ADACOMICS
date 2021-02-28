@@ -21,8 +21,8 @@ const inputText = document.querySelector('#input-texto')
 const totalResults = document.querySelector('.total-results-showed')
 const containerCards = document.querySelector('.contenedor-cards')
 const form = document.querySelector('#form')
-const containerMoreInfo = document.querySelector('.container-more-info')
-const moreInfoSection = document.querySelector('.more-info')
+const sectionDetails = document.querySelector('.container-more-info')
+const cardMoreInfo = document.querySelector('.card-more-info')
 const btnBack = document.querySelector('.btn-back')
 const titleResults = document.querySelector('.title-result')
 const btnDarkMode = document.querySelector('.modo-oscuro')
@@ -34,12 +34,13 @@ const createCard = (covers, HTML) => {
     const resource = cardClicked ? secondarySearch : typeOfResource.value
 
     covers.forEach((info) => {
-        const header = info.title ? 'title' : 'name'
+        let header = info.title ? 'title' : 'name'
+        let urlImg = `${info.thumbnail.path}/portrait_uncanny.${info.thumbnail.extension}`
 
         HTML.innerHTML += `
             <article class="${resource}-card card" data-id=${info.id} data-resource=${resource}>
                 <div class="imagen">
-                    <img src=${info.thumbnail.path}/portrait_uncanny.${info.thumbnail.extension} alt="cover">
+                    <img src=${urlImg} alt="cover">
                 </div>
                 <div class="info">
                     <h3 class="nombre">${info[header]}</h3>
@@ -58,7 +59,7 @@ const addOnClickEventToACard = () => {
         card.onclick = () => {
             let resource = card.dataset.resource
             let id = card.dataset.id
-            showMoreInfoResource(resource, id)
+            getInfoUniqueResource(resource, id)
             cardClicked = true
         }
     })
@@ -79,48 +80,49 @@ const getInfoUniqueResource = (resource, id) => {
 }
 
 const createCardMoreInfo = (info, resource) => {
-    show(containerMoreInfo)
-    moreInfoSection.innerHTML = ''
+    show(sectionDetails)
+    cardMoreInfo.innerHTML = ''
+
+    const urlImg = `${info.thumbnail.path}/portrait_uncanny.${info.thumbnail.extension}`
+    const date = new Intl.DateTimeFormat('es-DO').format(info.dates[0].date.type)
+    const creators = info.creators.returned > 0 ? info.creators.items[0].name : ''
 
     if (resource === 'comics') {
-        const date = new Intl.DateTimeFormat('es-DO').format(info.dates[0].date.type)
-        const creators = info.creators.returned > 0 ? info.creators.items[0].name : ''
-
         secondarySearch = 'characters'
         titleResults.innerHTML = 'Personajes'
-        moreInfoSection.innerHTML = `
-    <div>
-        <img src=${info.thumbnail.path}/portrait_uncanny.${info.thumbnail.extension} alt = "cover" >
-    </div>
 
-    <div class="info">
-        <h2 class="titulo">${info.title}</h2>
-        <h3>Publicado:</h3>
-        <p class="publication-date">${date ? date : ''}</p>
-        <h3>Guionista(s):</h3>
-        <p class="scriptwriter">${creators ? creators : ''}</p>
-        <h3>Descripcion:</h3>
-        <p class="description">${info.description ? info.description : ''}</p>
-    </div>`
+        cardMoreInfo.innerHTML = `
+                <div>
+                    <img src=${urlImg} alt="cover" >
+                </div>
+
+                <div class="info">
+                    <h2 class="titulo">${info.title}</h2>
+                    <h3>Publicado:</h3>
+                    <p class="publication-date">${date || ''}</p>
+                    <h3>Guionista(s):</h3>
+                    <p class="scriptwriter">${creators || ''}</p>
+                    <h3>Descripcion:</h3>
+                    <p class="description">${info.description || ''}</p>
+                </div>`
 
     } else {
         secondarySearch = 'comics'
         titleResults.innerHTML = 'Comics'
-        moreInfoSection.innerHTML = `
-        <div>
-            <img src=${info.thumbnail.path}/portrait_uncanny.${info.thumbnail.extension} alt = "cover" >
-        </div>
 
-        <div class="info">
-            <h2 class="name">${info.name}</h2>
-            <h3>Descripcion:</h3>
-            <p class="description">${info.description ? info.description : ''}</p>
-        </div>`
+        cardMoreInfo.innerHTML = `
+                <div>
+                    <img src=${urlImg} alt="cover" >
+                </div>
+
+                <div class="info">
+                    <h2 class="name">${info.name}</h2>
+                    <h3>Descripcion:</h3>
+                    <p class="description">${info.description || ''}</p>
+                </div>`
     }
 
 }
-
-const showMoreInfoResource = (resource, id) => getInfoUniqueResource(resource, id)
 
 const createURL = (resource, orden, userSearch, id) => {
     if (id) {
@@ -134,7 +136,7 @@ const createURL = (resource, orden, userSearch, id) => {
         return `${URLBASE}${resource}?offset=${currentPage * ITEM_PER_PAGE}
             &orderBy=${orden}&nameStartsWith=${userSearch}&${APIKEY}`
 
-    } else if (!userSearch.trim()) {
+    } else {
         return `${URLBASE}${resource}?offset=${currentPage * ITEM_PER_PAGE}
         &orderBy=${orden}&${APIKEY}`
     }
@@ -184,7 +186,8 @@ const checkPaging = (nextPage, doubleNextPage, previousPage, doublePreviuosPage)
 }
 
 const calculateRemainingResults = () => {
-    remainingResults = parseInt(totalResults.textContent) - ((currentPage + 1) * ITEM_PER_PAGE)
+    let totalResult = parseInt(totalResults.textContent)
+    remainingResults = totalResult - ((currentPage + 1) * ITEM_PER_PAGE)
 }
 
 const getInfo = (url) => {
@@ -197,10 +200,10 @@ const getInfo = (url) => {
         containerCards.innerHTML = ''
         totalResults.innerHTML = ''
         totalResults.innerHTML = elements.data.total
-        calculateRemainingResults()
+        calculateRemainingResults();
 
-        if (listOfElements.length) createCard(listOfElements, containerCards);
-        else containerCards.innerHTML = '<h3>No se han encontrado resultados</h3>';
+        listOfElements.length ? createCard(listOfElements, containerCards) :
+            containerCards.innerHTML = '<h3>No se han encontrado resultados</h3>';
         hide(overlay)
     })
 };
@@ -209,7 +212,7 @@ getInfo(URLBASE + 'comics?offset=0&orderBy=title&' + APIKEY);
 
 const searchResults = (resource, orden, inputText) => {
     show(overlay)
-
+    titleResults.innerHTML = 'Resultados'
     let url = createURL(resource.value, orden, inputText)
 
     switch (resource.value) {
@@ -220,14 +223,12 @@ const searchResults = (resource, orden, inputText) => {
             getInfo(url)
             break;
     }
-    titleResults.innerHTML = 'Resultados'
 }
 
 const changeOptionsSelectBox = (resource, selectBox) => {
 
     selectBox.options.length = 0
     if (resource.value === 'comics') {
-
         selectBox.appendChild(new Option('A-Z', 'title'))
         selectBox.appendChild(new Option('Z-A', '-title'))
         selectBox.appendChild(new Option('Mas nuevo', '-focDate'))
@@ -237,16 +238,15 @@ const changeOptionsSelectBox = (resource, selectBox) => {
         selectBox.appendChild(new Option('A-Z', 'name', true))
         selectBox.appendChild(new Option('Z-A', '-name'))
     }
-
 }
-
 
 const saveDarkMode = () => {
     const body = document.body
     body.classList.toggle('dark')
     btnDarkMode.classList.toggle('active')
 
-    body.classList.contains('dark') ? localStorage.setItem('modo-oscuro', 'true') : localStorage.setItem('modo-oscuro', 'false')
+    body.classList.contains('dark') ? localStorage.setItem('modo-oscuro', true) :
+        localStorage.setItem('modo-oscuro', false);
 }
 
 const checkDarkMode = () => {
@@ -259,6 +259,8 @@ const checkDarkMode = () => {
         btnDarkMode.classList.remove('active');
     }
 }
+
+// EVENTS
 
 typeOfResource.onchange = () => {
     currentPage = 0
@@ -293,14 +295,14 @@ form.onsubmit = (e) => {
     remainingResults = 0
     secondarySearch = typeOfResource.value
 
-    hide(containerMoreInfo)
+    hide(sectionDetails)
     searchResults(typeOfResource, currentOrder, inputText.value)
 }
 
 btnBack.onclick = () => {
     cardClicked = false
     searchResults(typeOfResource, currentOrder, inputText.value)
-    hide(containerMoreInfo)
+    hide(sectionDetails)
 }
 
 checkDarkMode()

@@ -43,6 +43,7 @@ body.dark main .busqueda {
 body.dark main #input-texto {
   border-bottom: 1px solid #808080;
   background-color: #121214;
+  background: none;
   color: white;
 }
 body.dark main button {

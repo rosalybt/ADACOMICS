@@ -4,7 +4,6 @@ form {
 
   .busqueda {
     width: 45%;
-
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -26,6 +25,7 @@ form {
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
+
     @include texto($color-deshabilitado, normal, bold);
     button {
       @include button($color-negro, $color-blanco, 100px, 35px);
@@ -36,10 +36,7 @@ form {
     }
     @media screen and (max-width: 768px) {
       flex-direction: column;
-      // justify-content: space-between;
-      // align-content: space-between;
       height: 100px;
-      // width: 50%;
       margin-top: 10px;
     }
   }
