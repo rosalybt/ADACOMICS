@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
-.comics-card .info, footer, .pages, .barra {
+.modo-oscuro span, .comics-card .info, footer, .pages, .barra {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -431,10 +431,11 @@ footer a:visited, footer a:link, footer a:active {
 .modo-oscuro::after {
   position: absolute;
   content: "";
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   background-color: white;
-  top: 0;
+  top: -2px;
+  left: 0;
   transform: translateX(35px);
   transition: 0.5s ease;
   border-radius: 100px;
@@ -446,29 +447,28 @@ footer a:visited, footer a:link, footer a:active {
 }
 .modo-oscuro.active::after {
   transition: 2s;
-  top: 0;
-  transform: translateX(-5px);
+  top: -2px;
+  transform: translateX(0px);
   transition: 0.5s ease;
 }
 .modo-oscuro span {
   width: 30px;
   height: 30px;
+  margin-right: 5px;
   display: flex;
   background: none;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-evenly;
   color: white;
 }
 @media screen and (max-width: 425px) {
   .modo-oscuro {
-    position: absolute;
     right: 2.5rem;
-    top: 23.5rem;
+    top: calc(60vh + 92px);
+    z-index: 1;
   }
 }
 @media screen and (min-width: 768px) {
   .modo-oscuro {
-    position: absolute;
     right: 3rem;
     top: 1.5rem;
   }
