@@ -10,7 +10,7 @@
     width: 100%;
     height: 350px;
     position: relative;
-    box-shadow: 0 26px 24px -16px ($color-gris);
+    box-shadow: 0 26px 24px -16px ($color-deshabilitado);
     img {
       width: 100%;
       height: 100%;
@@ -37,7 +37,7 @@
     }
 
     .info {
-      color: $color-rojo;
+      color: $color-terceario;
     }
   }
 
@@ -73,7 +73,7 @@
 }
 
 .characters-card {
-  background-color: $color-rojo;
+  background-color: $color-terceario;
   width: 220px;
   margin-bottom: 30px;
   h3 {
@@ -100,8 +100,8 @@
     top: 4px;
     height: 25%;
     padding-bottom: 25px;
-    color: $color-blanco;
-    background-color: $color-negro;
+    color: $color-principal;
+    background-color: $color-secundario;
     h3 {
       padding: 20px;
     }
@@ -114,7 +114,7 @@
     }
 
     .info {
-      background-color: $color-rojo;
+      background-color: $color-terceario;
     }
   }
 }

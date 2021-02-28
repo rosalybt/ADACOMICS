@@ -17,7 +17,7 @@
 }
 
 body {
-  background-color: white;
+  background-color: #fff;
   overflow-x: hidden;
 }
 body.dark body {
@@ -28,36 +28,36 @@ body.dark .barra {
 }
 body.dark main {
   background-color: #121214;
-  color: white;
+  color: #fff;
 }
 body.dark main form .fas.fa-search {
-  color: white;
+  color: #fff;
 }
 body.dark main form select {
   background-color: #121214;
-  color: white;
+  color: #fff;
 }
 body.dark main .busqueda {
-  color: white;
+  color: #fff;
 }
 body.dark main #input-texto {
   border-bottom: 1px solid #808080;
   background-color: #121214;
   background: none;
-  color: white;
+  color: #fff;
 }
 body.dark main button {
   background-color: #e50000;
 }
 body.dark main .show-results {
-  color: white;
+  color: #fff;
 }
 body.dark main .comics-card {
-  color: white;
+  color: #fff;
 }
 
 .barra {
-  background-color: black;
+  background-color: #000;
 }
 .barra .contenedor-marca {
   background-color: #e50000;
@@ -68,7 +68,7 @@ body.dark main .comics-card {
   line-height: 0;
   font-size: 2.5rem;
   padding: 5px;
-  color: white;
+  color: #fff;
 }
 
 .portada {
@@ -123,11 +123,11 @@ form .filtros button {
   padding: 5px;
   width: 100px;
   height: 35px;
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   margin: 0;
   cursor: pointer;
-  color: white;
+  color: #fff;
   font-weight: lighter;
   font-size: large;
 }
@@ -154,7 +154,7 @@ form h2 {
 
 .show-results {
   margin-top: 4rem;
-  color: black;
+  color: #000;
   font-weight: bold;
   font-size: 20px;
 }
@@ -193,11 +193,11 @@ main .container-more-info button {
   padding: 5px;
   width: 125px;
   height: 35px;
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   margin: 0;
   cursor: pointer;
-  color: white;
+  color: #fff;
   font-weight: lighter;
   font-size: large;
 }
@@ -235,11 +235,11 @@ main .container-more-info .more-info .info {
   padding: 5px;
   width: 45px;
   height: 45px;
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   margin: 5px;
   cursor: pointer;
-  color: white;
+  color: #fff;
   font-weight: lighter;
   font-size: large;
   color: _;
@@ -256,8 +256,8 @@ main .container-more-info .more-info .info {
 }
 
 footer {
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
   height: 25vh;
   color: _;
   font-weight: lighter;
@@ -265,14 +265,14 @@ footer {
 }
 footer a:visited, footer a:link, footer a:active {
   text-decoration: none;
-  color: white;
+  color: #fff;
 }
 
 .disable {
   color: #808080 !important;
 }
 .disable:hover {
-  background-color: black !important;
+  background-color: #000 !important;
   cursor: text;
 }
 
@@ -288,7 +288,7 @@ footer a:visited, footer a:link, footer a:active {
   width: 100%;
   height: 350px;
   position: relative;
-  box-shadow: 0 26px 24px -16px #686868;
+  box-shadow: 0 26px 24px -16px #808080;
   transform: translateY(0);
   transition: 0.5s ease;
 }
@@ -378,8 +378,8 @@ footer a:visited, footer a:link, footer a:active {
   top: 4px;
   height: 25%;
   padding-bottom: 25px;
-  color: white;
-  background-color: black;
+  color: #fff;
+  background-color: #000;
 }
 .characters-card .info h3 {
   padding: 20px;
@@ -399,7 +399,7 @@ footer a:visited, footer a:link, footer a:active {
 }
 .filtro-texto #input-texto {
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000;
   margin-top: 15px;
   padding: 5px 30px;
   font-size: x-large;
@@ -433,7 +433,7 @@ footer a:visited, footer a:link, footer a:active {
   content: "";
   width: 35px;
   height: 35px;
-  background-color: white;
+  background-color: #fff;
   top: -2px;
   left: 0;
   transform: translateX(35px);
@@ -443,7 +443,7 @@ footer a:visited, footer a:link, footer a:active {
 }
 .modo-oscuro.active {
   background-color: #343d58;
-  color: black;
+  color: #000;
 }
 .modo-oscuro.active::after {
   transition: 2s;
@@ -458,7 +458,7 @@ footer a:visited, footer a:link, footer a:active {
   display: flex;
   background: none;
   justify-content: space-evenly;
-  color: white;
+  color: #fff;
 }
 @media screen and (max-width: 425px) {
   .modo-oscuro {

@@ -1,7 +1,7 @@
 footer {
   @extend %centrar;
-  background-color: $color-negro;
-  color: $color-blanco;
+  background-color: $color-secundario;
+  color: $color-principal;
   height: 25vh;
   @include texto(_, $tamanio-medio, lighter);
 
@@ -10,7 +10,7 @@ footer {
     &:link,
     &:active {
       text-decoration: none;
-      color: $color-blanco;
+      color: $color-principal;
     }
   }
 }

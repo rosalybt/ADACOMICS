@@ -28,7 +28,7 @@ form {
 
     @include texto($color-deshabilitado, normal, bold);
     button {
-      @include button($color-negro, $color-blanco, 100px, 35px);
+      @include button($color-secundario, $color-principal, 100px, 35px);
     }
 
     @media screen and (max-width: 425px) {
@@ -52,7 +52,7 @@ form {
 
 .show-results {
   margin-top: 4rem;
-  @include texto($color-negro, 20px, bold);
+  @include texto($color-secundario, 20px, bold);
   span {
     @include texto($color-deshabilitado, $tamanio-pequenio, bold);
   }

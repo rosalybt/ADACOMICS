@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: $color-blanco;
+  background-color: $color-principal;
   overflow-x: hidden;
   &.dark {
     body {
@@ -19,41 +19,41 @@ body {
     }
 
     .barra {
-      background-color: $color-rojo;
+      background-color: $color-terceario;
     }
     main {
       form {
         .fas.fa-search {
-          color: $color-blanco;
+          color: $color-principal;
         }
         select {
           background-color: $color-modo-oscuro;
-          color: $color-blanco;
+          color: $color-principal;
         }
       }
 
       .busqueda {
-        color: $color-blanco;
+        color: $color-principal;
       }
       #input-texto {
         border-bottom: 1px solid $color-deshabilitado;
         background-color: $color-modo-oscuro;
         background: none;
-        color: $color-blanco;
+        color: $color-principal;
       }
 
       button {
-        background-color: $color-rojo;
+        background-color: $color-terceario;
       }
 
       .show-results {
-        color: $color-blanco;
+        color: $color-principal;
       }
       background-color: $color-modo-oscuro;
-      color: $color-blanco;
+      color: $color-principal;
 
       .comics-card {
-        color: $color-blanco;
+        color: $color-principal;
       }
     }
   }

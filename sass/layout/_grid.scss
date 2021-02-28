@@ -21,9 +21,9 @@ main {
   .container-more-info {
     padding-top: 50px;
     button {
-      @include button($color-negro, $color-blanco, 125px, 35px);
+      @include button($color-secundario, $color-principal, 125px, 35px);
       &:hover {
-        background-color: $color-rojo;
+        background-color: $color-terceario;
       }
     }
 
@@ -53,10 +53,10 @@ main {
   @extend %centrar;
   margin: 3rem 0 3rem 0;
   button {
-    @include button($color-negro, $color-blanco, 45px, 45px, 5px);
+    @include button($color-secundario, $color-principal, 45px, 45px, 5px);
     @include texto(_, $tamanio-grande, _);
     &:hover {
-      background-color: $color-rojo;
+      background-color: $color-terceario;
     }
   }
 

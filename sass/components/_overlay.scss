@@ -1,5 +1,5 @@
 .overlay-loading {
-  background-color: rgba($color-blanco, 0.5);
+  background-color: rgba($color-principal, 0.5);
   position: fixed;
   width: 100vw;
   height: 100%;
@@ -20,8 +20,8 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 5px solid $color-rojo;
-    border-color: $color-rojo transparent $color-rojo transparent;
+    border: 5px solid $color-terceario;
+    border-color: $color-terceario transparent $color-terceario transparent;
     animation: circle-animation 1.2s linear infinite;
     @keyframes circle-animation {
       0% {
