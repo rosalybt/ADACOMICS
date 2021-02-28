@@ -13,8 +13,8 @@ let cardClicked = false
 
 const nextPage = document.querySelector('#btn-next')
 const previousPage = document.querySelector('#btn-previous')
-const doubleNextPage = document.querySelector('#btn-double-next')
-const doublePreviuosPage = document.querySelector('#btn-double-previous')
+const btnFinishPage = document.querySelector('#btn-finish')
+const btnbeginningPage = document.querySelector('#btn-beginning')
 const selectBoxOrder = document.querySelector('#select-order')
 const typeOfResource = document.querySelector('#tipo')
 const inputText = document.querySelector('#input-texto')
@@ -49,7 +49,7 @@ const createCard = (covers, HTML) => {
     `
     });
     addOnClickEventToACard()
-    checkPaging(nextPage, doubleNextPage, previousPage, doublePreviuosPage)
+    checkPaging(nextPage, btnFinishPage, previousPage, btnbeginningPage)
 };
 
 const addOnClickEventToACard = () => {
@@ -154,34 +154,23 @@ const enable = (element) => {
 const hide = (element) => element.classList.add('hidden')
 const show = (element) => element.classList.remove('hidden')
 
-const checkPaging = (nextPage, doubleNextPage, previousPage, doublePreviuosPage) => {
-
+const checkPaging = (nextPage, btnFinishPage, previousPage, btnbeginningPage) => {
     let results = parseInt(totalResults.textContent)
 
     /*next options*/
-    if (remainingResults <= 0) {
-        disable(nextPage)
-    } else {
-        enable(nextPage)
-    }
-
-    if (remainingResults <= ITEM_PER_PAGE) {
-        disable(doubleNextPage)
-    } else {
-        enable(doubleNextPage)
-    }
+    remainingResults <= 0 ? disable(nextPage) : enable(nextPage)
+    remainingResults <= ITEM_PER_PAGE ? disable(btnFinishPage) : enable(btnFinishPage)
 
     /*Previuos opstions*/
     if ((remainingResults + ITEM_PER_PAGE) === results) {
         disable(previousPage)
-        disable(doublePreviuosPage)
+        disable(btnbeginningPage)
     } else {
         enable(previousPage)
     }
-    //if remainingResult is less than results minus 40 (two pages) then enable the button
-    if (remainingResults < (results - ITEM_PER_PAGE * 2)) {
-        enable(doublePreviuosPage)
-    }
+
+    // if remainingResult is less than results minus 40 (two pages) then enable the button
+    if (remainingResults < (results - ITEM_PER_PAGE * 2)) enable(btnbeginningPage)
 
 }
 
@@ -278,13 +267,18 @@ previousPage.onclick = () => {
     searchResults(typeOfResource, currentOrder, inputText.value)
 }
 
-doubleNextPage.onclick = () => {
-    currentPage += 2
+const calculateLastPage = () => {
+    let lastPage = Math.ceil(remainingResults / 20)
+    return remainingResults % ITEM_PER_PAGE > 0 ? lastPage : 0
+}
+
+btnFinishPage.onclick = () => {
+    currentPage = calculateLastPage()
     searchResults(typeOfResource, currentOrder, inputText.value)
 }
 
-doublePreviuosPage.onclick = () => {
-    currentPage -= 2
+btnbeginningPage.onclick = () => {
+    currentPage = 0
     searchResults(typeOfResource, currentOrder, inputText.value)
 }
 
