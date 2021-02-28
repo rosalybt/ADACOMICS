@@ -90,6 +90,7 @@ body.dark main .comics-card {
 form {
   display: flex;
   justify-content: space-between;
+  background: none;
 }
 form .busqueda {
   width: 45%;
@@ -462,7 +463,7 @@ footer a:visited, footer a:link, footer a:active {
   .modo-oscuro {
     position: absolute;
     right: 2.5rem;
-    top: 27rem;
+    top: 23.5rem;
   }
 }
 @media screen and (min-width: 768px) {
