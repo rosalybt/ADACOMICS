@@ -17,7 +17,7 @@
             <div class="contenedor-marca">
                 <h1 class="nombre-marca">ADA COMICS</h1>
             </div>
-            <button class="modo-oscuro">
+            <button class="modo-oscuro" aria-label="cambiar a modo oscuro">
                 <span><i class="fas fa-sun"></i></span>
                 <span><i class="fas fa-moon"></i></span>
             </button>
@@ -28,11 +28,12 @@
     </section>
 
     <main>
-        <form action="" id="form">
+        <form action="" id="form" aria-label="opciones para filtrar la busqueda">
             <div class="busqueda">
                 <label for="filtro-texto" class="filtro-texto">
                     <h2>Búsqueda</h2>
-                    <input type="text" name="filtro" id="input-texto" placeholder="Ingresa tu búsqueda">
+                    <input type="text" name="filtro" id="input-texto" placeholder="Ingresa tu búsqueda"
+                        aria-label="Ingresa tu búsqueda">
                 </label>
                 <i class="fas fa-search"></i>
             </div>
@@ -46,7 +47,7 @@
                 </label>
 
                 <label for="orden">ORDEN
-                    <select name="orden" id="select-order" class="select">
+                    <select name="orden" id="select-order" class="select" aria-label="Orden de la busqueda">
                         <option value="title">A-Z</option>
                         <option value="-title">Z-A</option>
                         <option value="-focDate">Mas nuevo</option>
@@ -87,10 +88,13 @@
         </div>
 
         <div class="pages">
-            <button id="btn-beginning"><i class="fas fa-angle-double-left"></i></button>
-            <button id="btn-previous"><i class="fas fa-angle-left"></i></button>
-            <button id="btn-next"><i class="fas fa-angle-right"></i></button>
-            <button id="btn-finish"><i class="fas fa-angle-double-right"></i></button>
+            <button id="btn-beginning" aria-label="ir a la primera pagina">
+                <i class="fas fa-angle-double-left"></i></button>
+            <button id="btn-previous" aria-label="ir a la pagina anterior"><i class="fas fa-angle-left"></i></button>
+            <button id="btn-next" aria-label="ir a la siguiente pagina"><i class="fas fa-angle-right"></i></button>
+            <button id="btn-finish" aria-label="ir a la ultima pagina">
+                <i class="fas fa-angle-double-right"></i>
+            </button>
         </div>
     </main>
 
