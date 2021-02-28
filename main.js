@@ -161,7 +161,7 @@ const checkPaging = (nextPage, btnFinishPage, previousPage, btnbeginningPage) =>
     remainingResults <= 0 ? disable(nextPage) : enable(nextPage)
     remainingResults <= ITEM_PER_PAGE ? disable(btnFinishPage) : enable(btnFinishPage)
 
-    /*Previuos opstions*/
+    /*Previous opstions*/
     if ((remainingResults + ITEM_PER_PAGE) === results) {
         disable(previousPage)
         disable(btnbeginningPage)

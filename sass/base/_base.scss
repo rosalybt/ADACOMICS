@@ -14,10 +14,7 @@ body {
   background-color: $color-principal;
   overflow-x: hidden;
   &.dark {
-    body {
-      background-color: $color-modo-oscuro;
-    }
-
+    background-color: $color-modo-oscuro;
     .barra {
       background-color: $color-terceario;
     }
