@@ -75,7 +75,7 @@ const getInfoUniqueResource = (resource, id) => {
         const result = data.comics || data.characters
 
         createCardMoreInfo(data, resource)
-        getInfo(result.collectionURI + "?" + APIKEY)
+        getInfo(result.collectionURI.replace("http", "https") + "?" + APIKEY)
     })
 }
 
