@@ -84,6 +84,7 @@ const createCardMoreInfo = (info, resource) => {
     cardMoreInfo.innerHTML = ''
 
     const urlImg = `${info.thumbnail.path}/portrait_uncanny.${info.thumbnail.extension}`
+    // las dos proximas variables rompen la vista de detalle de personaje
     const date = new Intl.DateTimeFormat('es-DO').format(info.dates[0].date.type)
     const creators = info.creators.returned > 0 ? info.creators.items[0].name : ''
 
@@ -125,6 +126,7 @@ const createCardMoreInfo = (info, resource) => {
 }
 
 const createURL = (resource, orden, userSearch, id) => {
+    // que bien esta funcion!
     if (id) {
         return URLBASE + resource + "/" + id + "?" + APIKEY
     }
@@ -141,7 +143,7 @@ const createURL = (resource, orden, userSearch, id) => {
         &orderBy=${orden}&${APIKEY}`
     }
 }
-
+// excelentes estas funciones auxiliares
 const disable = (element) => {
     element.disabled = true
     element.classList.add('disable')
@@ -204,6 +206,7 @@ const searchResults = (resource, orden, inputText) => {
     titleResults.innerHTML = 'Resultados'
     let url = createURL(resource.value, orden, inputText)
 
+    // por que es necesario un switch aca, si el comportamiento es el mismo en ambos?
     switch (resource.value) {
         case 'comics':
             getInfo(url)
@@ -239,7 +242,7 @@ const saveDarkMode = () => {
 }
 
 const checkDarkMode = () => {
-
+// excelente
     if (localStorage.getItem('modo-oscuro') === 'true') {
         document.body.classList.add('dark');
         btnDarkMode.classList.add('active');
